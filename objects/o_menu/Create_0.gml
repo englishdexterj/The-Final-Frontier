@@ -2,6 +2,13 @@ sc_initialize_menu_control();
 sc_initialize_menu_topscores();
 sc_initialize_menu_stats();
 
+//particles
+global.particle_sys = part_system_create();
+part_system_depth(global.particle_sys, -100);
+
+sc_init_part();
+//
+
 setup = false
 
 global.steam_api = false;

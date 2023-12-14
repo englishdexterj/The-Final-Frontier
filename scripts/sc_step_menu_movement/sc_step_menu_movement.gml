@@ -143,9 +143,11 @@ function sc_step_menu_movement() {
 			} else if selection[sel_menu, selected] = "Achievements" {
 				
 			} else if selection[sel_menu, selected] = "Top Scores" {
+				audio_play_sound(sfx_menu_select3, 10, false);
 				sel_menu = 4;
 				selected = 0;
 			} else if selection[sel_menu, selected] = "Stats" {
+				audio_play_sound(sfx_menu_select3, 10, false);
 				sel_menu = 9;
 				selected = 0;
 			} else if selection[sel_menu, selected] = "Options" {

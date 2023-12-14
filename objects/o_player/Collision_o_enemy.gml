@@ -70,6 +70,12 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active {
 		} else if hp >= 1 {
 			hp -= 1;
 		} else hp = 0;
+		
+		if hp = 1 {
+			audio_play_sound_at(sfx_lowhealth, x, y, 0, 100*global.scale, 1000*global.scale, 1, false, 2);
+			audio_play_sound_at(sfx_lowhealth, x - (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
+			audio_play_sound_at(sfx_lowhealth, x + (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
+		}
 	}
 	if rammer and rammer_cooldown = 0 {
 		if global.cheats = false && global.steam_api = true {
@@ -140,12 +146,6 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active {
 	audio_play_sound_at(_s, x, y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
 	audio_play_sound_at(_s, x - (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
 	audio_play_sound_at(_s, x + (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
-	
-	if hp = 1 {
-		audio_play_sound_at(sfx_lowhealth, x, y, 0, 100*global.scale, 1000*global.scale, 1, false, 2);
-		audio_play_sound_at(sfx_lowhealth, x - (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
-		audio_play_sound_at(sfx_lowhealth, x + (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
-	}
 	
 	flash_alpha = 1;
 	part_particles_create(global.particle_sys, x, y, global.pt_player, 30);
