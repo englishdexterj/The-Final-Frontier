@@ -125,7 +125,7 @@ if levelup_menu = true {
 				if _stats steam_set_stat_int("upgrades_shield", steam_get_stat_int("upgrades_shield") + 1);
 				o_player.upgrade_string = o_player.upgrade_string + ":22";
 				o_player.has_shield = true;
-				var _s = instance_create_layer(x, y, "Instances", o_shield);
+				var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
 				_s.depth = -10;
 				_s.shield_size = o_player.shield_size;
 				_s.max_hit_times = o_player.shield_hits;
@@ -272,7 +272,7 @@ if levelup_menu = true {
 				if _stats steam_set_stat_int("upgrades_gun_turret", steam_get_stat_int("upgrades_gun_turret") + 1);
 				o_player.upgrade_string = o_player.upgrade_string + ":88";
 				if upgrade[selected, up.active] = 1 {
-					var _t = instance_create_layer(x, y, "Instances", o_player_turret_large);
+					var _t = instance_create_layer(x, y, "Instances_Top", o_player_turret_large);
 					with _t {
 						pt = o_player.id;
 						depth = pt.depth - 3;
@@ -282,7 +282,7 @@ if levelup_menu = true {
 						_y *= global.scale;
 					}
 				} else if upgrade[selected, up.active] = 2 {
-					var _t = instance_create_layer(x, y, "Instances", o_player_turret_large);
+					var _t = instance_create_layer(x, y, "Instances_Top", o_player_turret_large);
 					with _t {
 						pt = o_player.id;
 						depth = pt.depth - 3;
@@ -297,7 +297,7 @@ if levelup_menu = true {
 			} else if upgrade[selected, up.name] = "Missile Turret" {
 				if _stats steam_set_stat_int("upgrades_missile_turret", steam_get_stat_int("upgrades_missile_turret") + 1);
 				o_player.upgrade_string = o_player.upgrade_string + ":82";
-				var _t = instance_create_layer(x, y, "Instances", o_player_turret_missile);
+				var _t = instance_create_layer(x, y, "Instances_Top", o_player_turret_missile);
 				with _t {
 					pt = o_player.id;
 					depth = pt.depth - 3;

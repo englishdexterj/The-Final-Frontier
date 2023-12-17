@@ -30,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "s_points",
+    "path": "sprites/s_points/s_points.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

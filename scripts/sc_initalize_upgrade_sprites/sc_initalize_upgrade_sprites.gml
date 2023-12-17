@@ -1,5 +1,5 @@
 // Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+// https"//help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function sc_initalize_upgrade_sprites(){
 	upgrade[k, up.name] = "Bullet Speed";		upgrade[k, up.sprite] = 26; 				upgrade[k, up.req1] = 13; 					upgrade[k, up.req2] = -4;  					upgrade[k, up.active_max] = 3; k++;
 	upgrade[k, up.name] = "Quad Shot";			upgrade[k, up.sprite] = 10; 				upgrade[k, up.req1] = 22; 					upgrade[k, up.req2] = -4;  					upgrade[k, up.active_max] = 1; k++;

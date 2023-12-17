@@ -33,6 +33,15 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_turret_laser"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_turret_laser")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_turret_missile"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_turret_missile")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_turret_ion"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_turret_ion")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_station_hatch"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_station_hatch")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_station_rocket_launcher"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_station_rocket_launcher")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_station_hanger"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_station_hanger")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_station_shield"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_station_shield")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_station_core"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_station_core")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_turret_station"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_turret_station")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "kills_turret_station_double"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("kills_turret_station_double")); _add_y += 64; _add_x = 0;
+
+
 		
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_hitby"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_hitby")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "hitby_basic"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("hitby_basic")); _add_y += 64; _add_x = 0;
@@ -56,6 +65,7 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_shotby_missile"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_shotby_missile")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_shotby_bullet"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_shotby_bullet")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_shotby_sniper"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_shotby_sniper")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_shotby_station_bullet"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_shotby_station_bullet")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_basic"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_basic")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_suicider"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_suicider")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_marauder"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_marauder")); _add_y += 64; _add_x = 0;
@@ -73,6 +83,8 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_turret_laser"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_turret_laser")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_turret_missile"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_turret_missile")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_turret_ion"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_turret_ion")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_turret_station"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_turret_station")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "shotby_turret_station_double"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("shotby_turret_station_double")); _add_y += 64; _add_x = 0;
 		
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_deaths"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_deaths")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_basic"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_basic")); _add_y += 64; _add_x = 0;
@@ -93,6 +105,8 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_turret_missile"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_turret_missile")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_turret_ion"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_turret_ion")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_asteroid"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_asteroid")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_turret_station"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_turret_station")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "killedby_turret_station_double"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("killedby_turret_station_double")); _add_y += 64; _add_x = 0;
 		
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_upgrades"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_upgrades")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "upgrades_speed"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("upgrades_speed")); _add_y += 64; _add_x = 0;
@@ -168,7 +182,6 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "enemy_missiles_shotby_flak"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("enemy_missiles_shotby_flak")); _add_y += 64; _add_x = 0;
 
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "enemies_rammed"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("enemies_rammed")); _add_y += 64; _add_x = 0;
-
 
 	}
 }

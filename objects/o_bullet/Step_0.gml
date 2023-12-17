@@ -26,6 +26,14 @@ if type = "missile" {
 		
 		if !enemy {
 			target = instance_nearest(x, y, o_enemy);
+			
+			if distance_to_object(target) > distance_to_object(instance_nearest(x, y, o_station_parent)) {
+				target = instance_nearest(x, y, o_station_parent);
+			}
+			
+			if distance_to_object(target) > distance_to_object(instance_nearest(x, y, o_station_core)) {
+				target = instance_nearest(x, y, o_station_core);
+			}
 		} else {
 			if instance_exists(o_player) {
 				if distance_to_object(instance_nearest(x, y, o_player)) <= distance_to_object(instance_nearest(x, y, o_player_drone)) {

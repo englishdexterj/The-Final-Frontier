@@ -24,13 +24,14 @@ spawn_level = 0;
 
 round_intermission = false;
 
-instance_create_layer(room_width div 2, room_height div 2, "Instances", o_menu);
-instance_create_layer(room_width div 2, room_height div 2, "Instances", o_player);
-if room = game instance_create_layer(room_width div 2, room_height div 2, "Instances", o_camera);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_menu);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_player);
+if room = game instance_create_layer(room_width div 2, room_height div 2, "Instances_Back", o_camera);
 //instance_create_layer(room_width div 2, room_height div 2, "Instances", o_minimap);
-instance_create_layer(room_width div 2, room_height div 2, "Instances", o_controller_sound);
-instance_create_layer(room_width div 2, room_height div 2, "Instances", o_upgrade_tree);
-instance_create_layer(room_width div 2, room_height div 2, "Instances", o_controller_asteroids);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_controller_sound);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_upgrade_tree);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_controller_asteroids);
+instance_create_layer(room_width div 2, room_height div 2, "Instances_Top", o_controller_station);
 
 height = camera_get_view_height(0)/2;
 width = camera_get_view_width(0)/2;

@@ -10,7 +10,7 @@ function sc_drone_shoot_bullet(ang_diff) {
 		heat += 1;
 		alarm_set(0, 10 - hardware*2);
 		for (var i = 0; i < dual_bullet; i++) {
-			with instance_create_layer(x, y, "Instances", o_bullet) {
+			with instance_create_layer(x, y, "Shots", o_bullet) {
 				enemy_type = other.enemy_type;
 				depth = other.depth + 1;
 				plated = false;

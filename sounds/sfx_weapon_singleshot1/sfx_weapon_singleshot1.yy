@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.144297,
+  "duration": 0.139297,
   "parent": {
     "name": "Single Shot",
     "path": "folders/Sounds/Single Shot.yy",

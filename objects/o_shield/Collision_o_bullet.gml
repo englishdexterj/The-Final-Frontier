@@ -3,32 +3,51 @@ else var _stats = false;
 
 if enemy and enemy != other.enemy && other.image_alpha = 1 {
 	
-	hit_reduce += .5+(1/max_hit_times*2)*hit_times;
-	hit_times += 1;
-	
 	if _stats steam_set_stat_int("total_enemy_shields_hit", steam_get_stat_int("total_enemy_shields_hit") + 1);
 	
-	if other.type = "missile" {
-		if _stats steam_set_stat_int("enemy_shields_hitby_missile", steam_get_stat_int("enemy_shields_hitby_missile") + 1);
+	if station {
+		hit_reduce += (1/shield_strength);
 		hit_times += 1;
-		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
-	} else if other.type = "ion" {
-		if _stats steam_set_stat_int("enemy_shields_hitby_ion", steam_get_stat_int("enemy_shields_hitby_ion") + 1);
-		hit_times += 1;
-		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
-		hit_times += 1;
-		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
-	} else if other.type = "sniper" {
-		if _stats steam_set_stat_int("enemy_shields_hitby_sniper", steam_get_stat_int("enemy_shields_hitby_sniper") + 1);
-		hit_times += 1;
-		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
-		hit_times += 1;
-		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
+	
+		if other.type = "missile" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_missile", steam_get_stat_int("enemy_shields_hitby_missile") + 1);
+			hit_times += 1;
+			hit_reduce += (1/shield_strength);
+		} else if other.type = "ion" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_ion", steam_get_stat_int("enemy_shields_hitby_ion") + 1);
+			hit_times += 2;
+			hit_reduce += (4/shield_strength);
+		} else if other.type = "sniper" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_sniper", steam_get_stat_int("enemy_shields_hitby_sniper") + 1);
+			hit_times += 2;
+			hit_reduce += (1/shield_strength);
+			hit_reduce += (1/shield_strength);
+		} else {
+			if _stats steam_set_stat_int("enemy_shields_hitby_bullet", steam_get_stat_int("enemy_shields_hitby_bullet") + 1);
+		}
 	} else {
-		if _stats steam_set_stat_int("enemy_shields_hitby_bullet", steam_get_stat_int("enemy_shields_hitby_bullet") + 1);
+		hit_reduce += .5+(1/max_hit_times*2)*hit_times;
+		hit_times += 1;
+	
+		if other.type = "missile" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_missile", steam_get_stat_int("enemy_shields_hitby_missile") + 1);
+			hit_times += 1;
+			hit_reduce += .5+(1/max_hit_times*2)*hit_times;
+		} else if other.type = "ion" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_ion", steam_get_stat_int("enemy_shields_hitby_ion") + 1);
+			hit_times += 2;
+			hit_reduce += 1;
+		} else if other.type = "sniper" {
+			if _stats steam_set_stat_int("enemy_shields_hitby_sniper", steam_get_stat_int("enemy_shields_hitby_sniper") + 1);
+			hit_times += 2;
+			hit_reduce += .5+(1/max_hit_times*2)*hit_times;
+			hit_reduce += .5+(1/max_hit_times*2)*hit_times;
+		} else {
+			if _stats steam_set_stat_int("enemy_shields_hitby_bullet", steam_get_stat_int("enemy_shields_hitby_bullet") + 1);
+		}
 	}
 	
-	if hit_times >= max_hit_times {
+	if !station and hit_times >= max_hit_times {
 		if _stats steam_set_stat_int("total_enemy_shields_destroyed", steam_get_stat_int("total_enemy_shields_destroyed") + 1);
 		
 		var _s = choose(sfx_sounds_interaction23);

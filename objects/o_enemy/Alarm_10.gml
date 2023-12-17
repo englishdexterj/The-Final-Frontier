@@ -26,8 +26,8 @@ if variable_instance_exists(id, "upgrades") {
 		turn_acc = 1.25;
 	
 		if can_have_shield and has_shield {
-			var _s = instance_create_layer(x, y, "Instances", o_shield);
-			_s.depth = -10;
+			var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
+			_s.depth = _s.depth - 10;
 			_s.shield_size = shield_size;
 			_s.max_hit_times = shield_hits;
 			_s.pt = id;
@@ -44,8 +44,8 @@ if variable_instance_exists(id, "upgrades") {
 		turn_acc = 1;
 	
 		if can_have_shield and has_shield {
-			var _s = instance_create_layer(x, y, "Instances", o_shield);
-			_s.depth = -10;
+			var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
+			_s.depth = _s.depth - 10;
 			_s.shield_size = shield_size;
 			_s.max_hit_times = shield_hits;
 			_s.pt = id;
@@ -56,8 +56,8 @@ if variable_instance_exists(id, "upgrades") {
 		if object_index = o_enemy_suicider smart = true;
 	} else {
 		if can_have_shield and has_shield {
-			var _s = instance_create_layer(x, y, "Instances", o_shield);
-			_s.depth = -10;
+			var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
+			_s.depth = _s.depth - 10;
 			_s.shield_size = shield_size;
 			_s.max_hit_times = shield_hits;
 			_s.pt = id;
@@ -67,8 +67,8 @@ if variable_instance_exists(id, "upgrades") {
 	}
 } else {
 	if can_have_shield and has_shield {
-		var _s = instance_create_layer(x, y, "Instances", o_shield);
-		_s.depth = -10;
+		var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
+		_s.depth = _s.depth - 10;
 		_s.shield_size = shield_size;
 		_s.max_hit_times = shield_hits;
 		_s.pt = id;

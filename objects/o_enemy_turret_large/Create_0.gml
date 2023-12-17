@@ -27,6 +27,8 @@ damage_y = 0;
 
 target = noone;
 
+parent = noone;
+
 flak_heat = 0;
 flak_cooldown = false;
 alarm_set(5, 10);

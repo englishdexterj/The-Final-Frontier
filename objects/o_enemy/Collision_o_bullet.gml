@@ -35,6 +35,12 @@ if other.enemy = false && (other.image_alpha = 1 or disabled) and !invincible {
 			
 			hurt = true;
 			alarm_set(7, 10);
+		} else if other.type = "sniper" and !hurt {
+			hit_radius = 8;
+			hp -= 2;
+			
+			hurt = true;
+			alarm_set(7, 10);
 		} else if other.type = "ion" {
 			hit_radius = 0;
 			disabled = true;

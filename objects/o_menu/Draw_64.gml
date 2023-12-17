@@ -50,6 +50,12 @@ if global.spawn_level = 1 {
 	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "ASTEROIDS");
 	draw_set_alpha(1);
 	draw_set_color(c_white);
+} else if global.station_level = global.spawn_level {
+	draw_set_color(c_red);
+	draw_set_alpha(wave_alpha*4);
+	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "ENEMY STATION");
+	draw_set_alpha(1);
+	draw_set_color(c_white);
 } else if global.spawn_level = global.next_boss_wave {
 	draw_set_color(c_red);
 	draw_set_alpha(wave_alpha*4);
@@ -259,10 +265,10 @@ if game_over = false && pause = false {
 if pause {
 	draw_set_color(c_black);
 	draw_set_alpha(0.25);
-	draw_rectangle(0, 0, room_height, room_width, false);
-	draw_text(width, height - 256, "PAUSED");
-	draw_set_alpha(1);
+	draw_rectangle(0, 0, room_width, room_height, false);
 	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_text(width, height - 256, "PAUSED");
 	
 	sc_draw_menu_overlay();
 	

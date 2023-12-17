@@ -58,7 +58,7 @@ y_speed = (y_speed + other.y_speed*(other.size/size))*.9;
 other.y_speed = (other.y_speed + temp_yspd*(size/other.size))*.9;
 */
 
-if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active {
+if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active && !invincible {
 	if !rammer or rammer_cooldown {
 		if hull_health > 0 {
 			if hull_health >= 1 {
@@ -139,6 +139,9 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active {
 		} else if other.enemy_type ="turret_ion" {
 			if hp = 0 steam_set_stat_int("killedby_turret_ion", steam_get_stat_int("killedby_turret_ion") + 1);
 			steam_set_stat_int("hitby_turret_ion", steam_get_stat_int("hitby_turret_ion") + 1);
+		} else if other.enemy_type ="turret_station" {
+			if hp = 0 steam_set_stat_int("killedby_turret_station", steam_get_stat_int("killedby_turret_station") + 1);
+			steam_set_stat_int("hitby_turret_station", steam_get_stat_int("hitby_turret_station") + 1);
 		}
 	}
 	

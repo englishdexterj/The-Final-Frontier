@@ -18,5 +18,23 @@ if ready {
 	
 	time += 0.015;
 	
+	x += change_x*global.scale*1/60;
+	y += change_y*global.scale*1/60;
+	
+	if spawn_timer > 0 {
+		spawn_timer--;
+		
+		if spawn_timer = 0 and spawn_count > 0 {
+			with instance_create_layer(x, y+1.1*sprite_get_height(sprite_index)*scale_max, "Above_All", o_point_indicator) {
+				points = other.points;
+				spawn_count = other.spawn_count-1;
+				spawn_timer = 60;
+				change_y = other.change_y;
+			}
+			
+			spawn_count = 0;
+		}
+	}
+	
 	if alpha <= 0 instance_destroy();
 }

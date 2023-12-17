@@ -1,4 +1,8 @@
-part_particles_create(global.particle_sys, x, y, enemy_type_particle, 30*size);
+if idle {
+	part_particles_create(global.particle_sys, x, y, global.pt_destroy_small, 30*size);
+} else {
+	part_particles_create(global.particle_sys, x, y, enemy_type_particle, 30*size);
+}
 
 if instance_exists(o_player) {
 if global.cheats = false and global.steam_api = true {
@@ -100,26 +104,28 @@ if _e_type != -1 {
 	}
 }
 
-if enemy_type = "heavy_cruiser" {
-	audio_play_sound_at(sfx_sound_shutdown192, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(sfx_sound_shutdown192, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(sfx_sound_shutdown192, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-} else if enemy_type = "battlecruiser" {
-	audio_play_sound_at(sfx_sound_shutdown293, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(sfx_sound_shutdown293, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(sfx_sound_shutdown293, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-} else {
-	var _s = choose(sfx_exp_short_soft1,sfx_exp_short_soft2,sfx_exp_short_soft3,sfx_exp_short_soft4,sfx_exp_short_soft5,sfx_exp_short_soft6,sfx_exp_short_soft7,sfx_exp_short_soft8,sfx_exp_short_soft9,sfx_exp_short_soft10,sfx_exp_short_soft11,sfx_exp_short_soft12);
-	audio_play_sound_at(_s, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(_s, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-	audio_play_sound_at(_s, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
-}
-
 global.ships_destroyed += 1;
-global.pts += points*global.xp_gain;
 
-var _point_indicator = instance_create_layer(x, y, "Instances", o_point_indicator);
-_point_indicator.points = points;
+if points > 0 {
+	var _point_indicator = instance_create_layer(x, y, "Above_All", o_point_indicator);
+	_point_indicator.points = points;
+	_point_indicator.original = true;
+
+	if enemy_type = "heavy_cruiser" {
+		audio_play_sound_at(sfx_sound_shutdown192, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(sfx_sound_shutdown192, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(sfx_sound_shutdown192, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+	} else if enemy_type = "battlecruiser" {
+		audio_play_sound_at(sfx_sound_shutdown293, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(sfx_sound_shutdown293, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(sfx_sound_shutdown293, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+	} else {
+		var _s = choose(sfx_exp_short_soft1,sfx_exp_short_soft2,sfx_exp_short_soft3,sfx_exp_short_soft4,sfx_exp_short_soft5,sfx_exp_short_soft6,sfx_exp_short_soft7,sfx_exp_short_soft8,sfx_exp_short_soft9,sfx_exp_short_soft10,sfx_exp_short_soft11,sfx_exp_short_soft12);
+		audio_play_sound_at(_s, x, y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(_s, x - (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+		audio_play_sound_at(_s, x + (room_width - view_hport[0]), y, 0, 200*global.scale, 1000*global.scale, 1, false, 1);
+	}
+}
 
 if instance_exists(followed) && instance_exists(following) {
 	followed.following = following;

@@ -10,7 +10,7 @@ function sc_shoot_ion(ang_diff) {
 		heat += 2;
 		alarm_set(0, 5);
 		for (var i = 0; i < dual_bullet; i++) {
-			with instance_create_layer(x, y, "Instances", o_ion_beam) {
+			with instance_create_layer(x, y, "Shots", o_ion_beam) {
 				enemy_type = other.enemy_type;
 				plated = false;
 				depth = other.depth + 1;

@@ -3,7 +3,7 @@ if !_clean_destroy {
 
 	if abs(image_xscale) > global.scale {
 		repeat(3) {
-			var _a = instance_create_layer(x, y, "Instances", o_asteroid);
+			var _a = instance_create_layer(x, y, "Instances_Upper_Middle", o_asteroid);
 			_a.image_xscale = image_xscale/2;
 			_a.image_yscale = abs(image_yscale/2);
 			_a.mult = mult/2;

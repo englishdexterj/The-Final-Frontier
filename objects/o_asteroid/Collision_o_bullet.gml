@@ -24,6 +24,9 @@ if image_alpha = 1 {
 		} else if other.type = "laser" {
 			hit_radius = 2;
 			hp -= 1;
+		} else if other.type = "sniper" {
+			hit_radius = 4;
+			hp -= 2;
 		}
 		
 		//shader

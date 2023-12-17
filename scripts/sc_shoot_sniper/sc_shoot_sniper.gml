@@ -10,7 +10,7 @@ function sc_shoot_sniper(ang_diff) {
 		heat += 5 + (dual_bullet-1)*2.5;
 		alarm_set(0, 5);
 		for (var i = 0; i < dual_bullet; i++) {
-			with instance_create_layer(x, y, "Instances", o_sniper_bullet) {
+			with instance_create_layer(x, y, "Shots", o_sniper_bullet) {
 				enemy_type = other.enemy_type;
 				depth = other.depth + 1;
 				plated = true;

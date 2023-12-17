@@ -21,7 +21,7 @@ function sc_shoot_laser(ang_diff) {
 			alarm_set(0, 5);
 			
 			for (var i = 0; i < 1; i++) {
-				with instance_create_layer(x, y, "Instances", o_laser) {
+				with instance_create_layer(x, y, "Shots", o_laser) {
 					enemy_type = other.enemy_type;
 					flank = false;
 					plated = false;

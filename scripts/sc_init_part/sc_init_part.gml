@@ -1,6 +1,68 @@
 function sc_init_part() {
 	#region Explosion Particle
 	
+	//shield glow
+	var _sg = part_type_create();
+	part_type_shape(_sg, pt_shape_pixel);
+	part_type_size(_sg, 16, 32, -.2, .1);
+	part_type_color1(_sg, make_color_rgb(200, 120, 120));
+	part_type_alpha3(_sg, 1, .8, 0);
+	//part_type_blend(_sg, bm_add);
+	
+	part_type_life(_sg, 300, 600);
+	
+	part_type_speed(_sg, 2, 3, 0, .1); // Set particle speed range
+	part_type_direction(_sg, 0, 360, 0, 1); // Allow particles to move in any direction
+	
+	global.pt_shield_glow = _sg;
+	//
+	
+	//hanger
+	var _hg = part_type_create();
+	part_type_shape(_hg, pt_shape_pixel);
+	part_type_size(_hg, 16, 32, -.2, .1);
+	part_type_color1(_hg, make_color_rgb(255, 100, 100));
+	part_type_alpha3(_hg, 1, .8, 0);
+	//part_type_blend(_sg, bm_add);
+	
+	part_type_life(_hg, 300, 600);
+	
+	part_type_speed(_hg, 2, 3, 0, .1); // Set particle speed range
+	part_type_direction(_hg, 0, 360, 0, 1); // Allow particles to move in any direction
+	
+	global.pt_hanger = _hg;
+	//
+	
+	//destroy small
+	var _dss = part_type_create();
+	part_type_sprite(_dss, s_triangle, false, false, false);
+	part_type_life(_dss, 10, 30);
+	part_type_alpha2(_dss, 1, 0);
+	part_type_speed(_dss, 0, 4*global.scale, 0, 0);
+	part_type_direction(_dss, 0, 359, 0, 0);
+	part_type_orientation(_dss, 0, 359, 0, 0, false);
+	part_type_scale(_dss, .5*global.scale, .5*global.scale);
+	
+	part_type_color2(_dss, make_color_rgb(123, 50, 25), make_color_rgb(189, 118, 94));
+	
+	global.pt_destroy_small = _dss;
+	//
+	
+	//destroy
+	var _ds = part_type_create();
+	part_type_sprite(_ds, s_triangle, false, false, false);
+	part_type_life(_ds, 10, 30);
+	part_type_alpha2(_ds, 1, 0);
+	part_type_speed(_ds, 0, 4*global.scale, 0, 0);
+	part_type_direction(_ds, 0, 359, 0, 0);
+	part_type_orientation(_ds, 0, 359, 0, 0, false);
+	part_type_scale(_ds, 4*global.scale, 4*global.scale);
+	
+	part_type_color2(_ds, make_color_rgb(123, 50, 25), make_color_rgb(189, 118, 94));
+	
+	global.pt_destroy = _ds;
+	//
+	
 	//engine
 	var _en = part_type_create();
 	part_type_sprite(_en, s_triangle, false, false, false);
@@ -134,6 +196,51 @@ function sc_init_part() {
 	part_type_color2(_pp, make_color_rgb(0, 0, 255), c_white);
 	
 	global.pt_player = _pp;
+	//
+	
+	//station small
+	var _pss = part_type_create();
+	part_type_sprite(_pss, s_triangle, false, false, false);
+	part_type_life(_pss, 20, 60);
+	part_type_alpha2(_pss, 1, 0);
+	part_type_speed(_pss, 0, 20*global.spd*global.scale, 0, 0);
+	part_type_direction(_pss, 0, 359, 0, 0);
+	part_type_orientation(_pss, 0, 359, 0, 0, false);
+	part_type_scale(_pss, 1*global.scale, 1*global.scale);
+	
+	part_type_color2(_pss, make_color_rgb(123, 50, 25), make_color_rgb(189, 118, 94));
+	
+	global.pt_station_small = _pss;
+	//
+	
+	//station medium
+	var _psm = part_type_create();
+	part_type_sprite(_psm, s_triangle, false, false, false);
+	part_type_life(_psm, 40, 120);
+	part_type_alpha2(_psm, 1, 0);
+	part_type_speed(_psm, 0, 20*global.spd*global.scale, 0, 0);
+	part_type_direction(_psm, 0, 359, 0, 0);
+	part_type_orientation(_psm, 0, 359, random_range(-1,1), 0, false);
+	part_type_scale(_psm, 2*global.scale, 2*global.scale);
+	
+	part_type_color2(_psm, make_color_rgb(123, 50, 25), make_color_rgb(189, 118, 94));
+	
+	global.pt_station_medium = _psm;
+	//
+	
+	//station large
+	var _psl = part_type_create();
+	part_type_sprite(_psl, s_triangle, false, false, false);
+	part_type_life(_psl, 60, 180);
+	part_type_alpha2(_psl, 1, 0);
+	part_type_speed(_psl, 0, 60*global.spd*global.scale, 0, 0);
+	part_type_direction(_psl, 0, 359, 0, 0);
+	part_type_orientation(_psl, 0, 359, random_range(-1,1), 0, false);
+	part_type_scale(_psl, 4*global.scale, 4*global.scale);
+	
+	part_type_color2(_psl, make_color_rgb(123, 50, 25), make_color_rgb(189, 118, 94));
+	
+	global.pt_station_large = _psl;
 	//
 	
 	//basic

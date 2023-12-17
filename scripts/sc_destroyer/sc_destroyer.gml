@@ -14,7 +14,7 @@ function sc_destroyer(target) {
 		spawn_cooldown = true;
 		spawn_heat += 10;
 		
-		var _s = instance_create_layer(x, y, "Instances", choose(o_enemy_basic, o_enemy_suicider));
+		var _s = instance_create_layer(x, y, "Instances_Top", choose(o_enemy_basic, o_enemy_suicider));
 		_s.direction = irandom_range(0, 359);
 		_s.image_angle = _s.direction;
 		

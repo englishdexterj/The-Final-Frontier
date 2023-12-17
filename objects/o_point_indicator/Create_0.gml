@@ -4,6 +4,14 @@ alarm_set(0, 1);
 
 alpha = 1;
 
+original = false;
+spawn_timer = 0;
+spawn_count = 0;
+
 shader_time = shader_get_uniform(sh_glisten, "time");
 shader_alpha = shader_get_uniform(sh_glisten, "alpha");
+shader_glisten = shader_get_uniform(sh_glisten, "glisten_strength");
 time = 0;
+
+change_y = 0;
+change_x = 0;

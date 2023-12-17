@@ -28,7 +28,7 @@ hurt = false;
 //gun shoot speed cooldown
 cooldown = false;
 //gun heat
-heat = irandom_range(0, 10);
+heat = irandom_range(4, 10);
 //gun heat reduction
 alarm_set(1, 10);
 
@@ -69,7 +69,7 @@ if enemy_type = "basic" {
 	sprite_index = s_enemy_shotgun;
 } else if enemy_type = "destroyer" {
 	sprite_index = s_enemy_destroyer;
-	var _t1 = instance_create_layer(x, y-17, "Instances", o_enemy_turret_laser);
+	var _t1 = instance_create_layer(x, y-17, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t1 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -78,7 +78,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t2 = instance_create_layer(x, y+17, "Instances", o_enemy_turret_laser);
+	var _t2 = instance_create_layer(x, y+17, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t2 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -87,7 +87,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t3 = instance_create_layer(x, y-17, "Instances", o_enemy_turret_large);
+	var _t3 = instance_create_layer(x, y-17, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t3 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -96,7 +96,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t4 = instance_create_layer(x, y+17, "Instances", o_enemy_turret_large);
+	var _t4 = instance_create_layer(x, y+17, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t4 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -110,7 +110,7 @@ if enemy_type = "basic" {
 	alarm_set(8, 1);
 } else if enemy_type = "heavy_cruiser" {
 	sprite_index = s_enemy_heavy_cruiser;
-	var _t1 = instance_create_layer(x, y-17, "Instances", o_enemy_turret_laser);
+	var _t1 = instance_create_layer(x, y-17, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t1 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -119,7 +119,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t2 = instance_create_layer(x, y+17, "Instances", o_enemy_turret_laser);
+	var _t2 = instance_create_layer(x, y+17, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t2 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -128,7 +128,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t3 = instance_create_layer(x, y-17, "Instances", o_enemy_turret_ion);
+	var _t3 = instance_create_layer(x, y-17, "Instances_Upper_Middle", o_enemy_turret_ion);
 	with _t3 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -137,7 +137,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t4 = instance_create_layer(x, y+17, "Instances", o_enemy_turret_ion);
+	var _t4 = instance_create_layer(x, y+17, "Instances_Upper_Middle", o_enemy_turret_ion);
 	with _t4 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -146,7 +146,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t5 = instance_create_layer(x, y-17, "Instances", o_enemy_turret_large);
+	var _t5 = instance_create_layer(x, y-17, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t5 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -155,7 +155,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t6 = instance_create_layer(x, y+17, "Instances", o_enemy_turret_large);
+	var _t6 = instance_create_layer(x, y+17, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t6 {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -164,7 +164,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_heavy_cruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_heavy_cruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;
@@ -175,7 +175,7 @@ if enemy_type = "basic" {
 		reactor_number = 1;
 		type = "heavy_cruiser";
 	}
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_heavy_cruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_heavy_cruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;
@@ -191,7 +191,7 @@ if enemy_type = "basic" {
 	}
 } else if enemy_type = "battlecruiser" {
 	sprite_index = s_enemy_battlecruiser;
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -200,7 +200,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -209,7 +209,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_ion);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_ion);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -218,7 +218,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_ion);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_ion);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -227,7 +227,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -236,7 +236,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -245,7 +245,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -254,7 +254,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -263,7 +263,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -272,7 +272,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -281,7 +281,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_missile);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_missile);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -290,7 +290,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_missile);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_missile);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -299,7 +299,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -308,7 +308,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -317,7 +317,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_laser);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -327,7 +327,7 @@ if enemy_type = "basic" {
 		_y *= global.scale;
 		max_turn_speed = .3;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_laser);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_laser);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -337,7 +337,7 @@ if enemy_type = "basic" {
 		_y *= global.scale;
 		max_turn_speed = .3;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -346,7 +346,7 @@ if enemy_type = "basic" {
 		_x *= global.scale;
 		_y *= global.scale;
 	}
-	var _t = instance_create_layer(x, y, "Instances", o_enemy_turret_large);
+	var _t = instance_create_layer(x, y, "Instances_Upper_Middle", o_enemy_turret_large);
 	with _t {
 		pt = other.id;
 		depth = pt.depth - 3;
@@ -356,7 +356,7 @@ if enemy_type = "basic" {
 		_y *= global.scale;
 	}
 	
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_battlecruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_battlecruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;
@@ -367,7 +367,7 @@ if enemy_type = "basic" {
 		reactor_number = 1;
 		type = "battlecruiser";
 	}
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_battlecruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_battlecruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;
@@ -378,7 +378,7 @@ if enemy_type = "basic" {
 		reactor_number = 2;
 		type = "battlecruiser";
 	}
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_battlecruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_battlecruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;
@@ -389,7 +389,7 @@ if enemy_type = "basic" {
 		reactor_number = 3;
 		type = "battlecruiser";
 	}
-	var _r = instance_create_layer(x, y, "Instances", o_enemy_battlecruiser_reactor);
+	var _r = instance_create_layer(x, y, "Instances_Top", o_enemy_battlecruiser_reactor);
 	with _r {
 		pt = other.id;
 		depth = pt.depth - 1;

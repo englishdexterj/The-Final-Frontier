@@ -11,7 +11,7 @@ function sc_shoot_shotgun(ang_diff) {
 		alarm_set(0, 5);
 		for (var i = 0; i < dual_bullet; i++) {
 			repeat (5) {
-				with instance_create_layer(x, y, "Instances", o_bullet) {
+				with instance_create_layer(x, y, "Shots", o_bullet) {
 					enemy_type = other.enemy_type;
 					depth = other.depth + 1;
 					plated = false;

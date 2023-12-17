@@ -110,7 +110,7 @@ repeat (1000) {
 	var skip = false
 	for (var i = 0; i < array_length(enemy); i++) {
 		if enemy[i][3] = j {
-			//show_debug_message("Lvl " + string(j) + ": 1 " + string(enemy[i][5]));
+			//show_debug_message("Lvl " + string(j) + "" 1 " + string(enemy[i][5]));
 			enemy_total[i][j] += 1;
 			enemy_total[i][0] += 1;
 			enemy_total[12][j] += 1;

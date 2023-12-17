@@ -1,4 +1,4 @@
-if other.enemy = true && other.image_alpha = 1 && !cloaking_active {
+if other.enemy = true && other.image_alpha = 1 && !cloaking_active && !invincible {
 	if other.type = "ion" && disabled = false {
 		if global.cheats = false && global.steam_api = true {
 			steam_set_stat_int("total_shotby", steam_get_stat_int("total_shotby") + 1);
@@ -41,6 +41,7 @@ if other.enemy = true && other.image_alpha = 1 && !cloaking_active {
 				else if other.type = "missile" steam_set_stat_int("total_shotby_missile", steam_get_stat_int("total_shotby_missile") + 1);
 				else if other.type = "bullet" steam_set_stat_int("total_shotby_bullet", steam_get_stat_int("total_shotby_bullet") + 1);
 				else if other.type = "sniper" steam_set_stat_int("total_shotby_sniper", steam_get_stat_int("total_shotby_sniper") + 1);
+				else if other.type = "station_bullet" steam_set_stat_int("total_shotby_station_bullet", steam_get_stat_int("total_shotby_station_bullet") + 1);
 				
 				if other.enemy_type ="basic" {
 					if hp = 0 steam_set_stat_int("killedby_basic", steam_get_stat_int("killedby_basic") + 1);
@@ -93,6 +94,12 @@ if other.enemy = true && other.image_alpha = 1 && !cloaking_active {
 				} else if other.enemy_type ="turret_ion" {
 					if hp = 0 steam_set_stat_int("killedby_turret_ion", steam_get_stat_int("killedby_turret_ion") + 1);
 					steam_set_stat_int("shotby_turret_ion", steam_get_stat_int("shotby_turret_ion") + 1);
+				} else if other.enemy_type ="turret_station" {
+					if hp = 0 steam_set_stat_int("killedby_turret_station", steam_get_stat_int("killedby_turret_station") + 1);
+					steam_set_stat_int("shotby_turret_station", steam_get_stat_int("shotby_turret_station") + 1);
+				} else if other.enemy_type ="turret_station_double" {
+					if hp = 0 steam_set_stat_int("killedby_turret_station_double", steam_get_stat_int("killedby_turret_station_double") + 1);
+					steam_set_stat_int("shotby_turret_station_double", steam_get_stat_int("shotby_turret_station_double") + 1);
 				}
 			}
 		}

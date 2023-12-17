@@ -15,7 +15,7 @@ function sc_drone_shoot_flak(ang_diff) {
 			flak_cooldown = true;
 			flak_heat += .5;
 			alarm_set(4, flak_speed);
-			with instance_create_layer(x, y, "Instances", o_flak) {
+			with instance_create_layer(x, y, "Shots", o_flak) {
 				enemy_type = other.enemy_type;
 				enemy = false;
 				bullet_color = make_color_rgb(150, 80, 80);

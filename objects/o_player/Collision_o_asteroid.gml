@@ -1,4 +1,4 @@
-if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active {
+if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active && !invincible {
 	if !rammer or rammer_cooldown {
 		if hull_health > 0 {
 			if hull_health >= 1 hull_health -= 1;

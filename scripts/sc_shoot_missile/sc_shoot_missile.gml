@@ -10,7 +10,7 @@ function sc_shoot_missile(ang_diff) {
 		heat += 6;
 		alarm_set(0, 5);
 		for (var i = 0; i < dual_bullet; i++) {
-			with instance_create_layer(x, y, "Instances", o_missile) {
+			with instance_create_layer(x, y, "Shots", o_missile) {
 				enemy_type = other.enemy_type;
 				if other.plated_missile plated = true;
 				else plated = false;

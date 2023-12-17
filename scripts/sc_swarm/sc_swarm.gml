@@ -20,8 +20,8 @@ function sc_swarm() {
 		}
 		var _ang = (follow_position-1)*(72/_ring);
 		
-		x = lerp(x, following.x + lengthdir_x(sprite_get_width(sprite_index)*global.scale*1*_ring, _ang mod 360), 1);
-		y = lerp(y, following.y + lengthdir_y(sprite_get_width(sprite_index)*global.scale*1*_ring, _ang mod 360), 1);
+		x = lerp(x, following.x + lengthdir_x(sprite_get_width(sprite_index)*global.scale*2*_ring, _ang mod 360), 1);
+		y = lerp(y, following.y + lengthdir_y(sprite_get_width(sprite_index)*global.scale*2*_ring, _ang mod 360), 1);
 	}
 	
 	acceleration = following.acceleration;

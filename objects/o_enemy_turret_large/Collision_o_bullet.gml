@@ -14,6 +14,8 @@ if other.enemy = false && other.image_alpha = 1 {
 			hp -= 1;
 		} else if other.type = "missile" {
 			hp -= 2;
+		} else if other.type = "sniper" {
+			hp -= 2;
 		} else if other.type = "laser" {
 			hp -= 1;
 		}

@@ -11,7 +11,7 @@ if menu_enemies < menu_enemies_max {
 		var _x = irandom(1920);
 		var _y = irandom(1080);
 		if !instance_place(_x, _y, o_asteroid) {
-			var _e = instance_create_layer(_x, _y, "Instances", global.info[_index][4]);
+			var _e = instance_create_layer(_x, _y, "Instances_Top", global.info[_index][4]);
 			_e.direction = irandom_range(0, 359);
 			_e.image_angle = _e.direction;
 			_e.upgrades = _lvl;
@@ -24,7 +24,7 @@ if menu_friendlies < menu_friendlies_max {
 	var _x = irandom(1920);
 	var _y = irandom(1080);
 	if !instance_place(_x, _y, o_asteroid) {
-		var _f = instance_create_layer(_x, _y, "Instances", o_player_drone);
+		var _f = instance_create_layer(_x, _y, "Instances_Top", o_player_drone);
 		_f.direction = irandom_range(0, 359);
 		_f.image_angle = _f.direction;
 		_f.ai = 0;
@@ -34,7 +34,7 @@ if menu_friendlies < menu_friendlies_max {
 }
 
 if menu_asteroids < menu_asteroids_max {
-	var _a = instance_create_layer(irandom_range(room_width/4, (room_width/4) * 3), choose(0, room_height), "Instances", o_asteroid);
+	var _a = instance_create_layer(irandom_range(room_width/4, (room_width/4) * 3), choose(0, room_height), "Instances_Upper_Middle", o_asteroid);
 	with _a {
 		x_speed = random_range(-2, 2);
 	
@@ -45,6 +45,8 @@ if menu_asteroids < menu_asteroids_max {
 			y += irandom_range(100, 350);
 			y_speed = random_range(-0.5, -1);
 		}
+		var _spd = (sqr(x_speed) + sqr(y_speed)) / 10;
+		depth -= _spd;
 	}
 }
 
@@ -53,7 +55,11 @@ if menu_asteroids < menu_asteroids_max {
 if steam_initialised() {
 	if steam_stats_ready() && steam_is_overlay_enabled() {
 		global.steam_api = true;
+	} else {
+		global.steam_api = false;
 	}
+} else {
+	global.steam_api = false;
 }
 
 sc_step_menu_control();

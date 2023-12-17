@@ -1,0 +1,1 @@
+global.station_destroyed = false;

@@ -31,16 +31,18 @@ if !instance_exists(o_player) {
 		y = -246;
 	}
 } else {
-	if y > room_height {
-		y_speed *= -.5;
-		y = room_height - 10;
-		direction *= -1;
-		image_angle = direction;
-	} else if y < 0 {
-		y_speed *= -.5;
-		direction *= -1;
-		image_angle = direction;
-		y = 10;
+	if idle = false {
+		if y > room_height {
+			y_speed *= -.5;
+			y = room_height - 10;
+			direction *= -1;
+			image_angle = direction;
+		} else if y < 0 {
+			y_speed *= -.5;
+			direction *= -1;
+			image_angle = direction;
+			y = 10;
+		}
 	}
 	
 	//switch side of map
@@ -55,233 +57,269 @@ if !instance_exists(o_player) {
 
 
 
-if !disabled {
-
-if instance_exists(o_player_drone) {
-	if distance_to_object(instance_nearest(x, y, o_player_drone)) < distance_to_object(o_player) {
-		target = instance_nearest(x, y, o_player_drone);
+if !disabled and !idle {
+	if instance_exists(o_player_drone) {
+		if distance_to_object(instance_nearest(x, y, o_player_drone)) < distance_to_object(o_player) {
+			target = instance_nearest(x, y, o_player_drone);
+		} else if instance_exists(o_player) {
+			target = o_player;
+		} else target = noone;
 	} else if instance_exists(o_player) {
 		target = o_player;
 	} else target = noone;
-} else if instance_exists(o_player) {
-	target = o_player;
-} else target = noone;
 
-//suicider ai
-if enemy_type = "suicider" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		} else if distance_to_object(target) >= 90*global.scale*target.size {
-			sc_push(target);
-		} else if distance_to_object(target) < 90*global.scale*target.size {
-			sc_suicide(target);
-		}
-	}
-}
-
-//basic ai
-else if enemy_type = "basic" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		} else if distance_to_object(target) >= 90*global.scale*target.size {
-			sc_push(target);
-		} else if distance_to_object(target) < 90*global.scale*target.size {
-			sc_back(target);
-		}
-	}
-}
-
-//bomber ai
-else if enemy_type = "bomber" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		} if distance_to_object(target) >= 90*global.scale*target.size {
-			sc_push(target);
-		} else if distance_to_object(target) < 90*global.scale*target.size {
-			sc_back(target);
-		}
-	}
-}
-
-//rusher ai
-else if enemy_type = "rusher" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		}
-		if smart var ang_diff = sc_angdiff_smart(1, target, .5);
-		else var ang_diff = sc_angdiff(1, target);
-		if ((ang_diff < 10 and distance_to_object(target) < 200*global.scale*target.size) 
-			   or rush) and rushing < 120 {
-			rush = true;
-			part_particles_create(global.particle_sys, x, y, global.pt_engine, 2);
-			
-			sc_rush(target, ang_diff);
-		} else {
-			if rush {
-				if rushing < 240 {
-					rushing++;
-				} else {
-					rush = false;
-					rushing = 0;
-				}
+	//suicider ai
+	if enemy_type = "suicider" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} else if distance_to_object(target) >= 90*global.scale*target.size {
+				sc_push(target);
+			} else if distance_to_object(target) < 90*global.scale*target.size {
+				sc_suicide(target);
 			}
-			sc_push(target);
 		}
 	}
-}
 
-//marauder ai
-else if enemy_type = "marauder" {
-	if target != noone {
-		if follow = true {
+	//basic ai
+	else if enemy_type = "basic" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} else if distance_to_object(target) >= 90*global.scale*target.size {
+				sc_push(target);
+			} else if distance_to_object(target) < 90*global.scale*target.size {
+				sc_back(target);
+			}
+		}
+	}
+
+	//bomber ai
+	else if enemy_type = "bomber" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} if distance_to_object(target) >= 90*global.scale*target.size {
+				sc_push(target);
+			} else if distance_to_object(target) < 90*global.scale*target.size {
+				sc_back(target);
+			}
+		}
+	}
+
+	//rusher ai
+	else if enemy_type = "rusher" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			}
+			if smart var ang_diff = sc_angdiff_smart(1, target, .5);
+			else var ang_diff = sc_angdiff(1, target);
+			if ((ang_diff < 10 and distance_to_object(target) < 200*global.scale*target.size) 
+				   or rush) and rushing < 120 {
+				rush = true;
+				part_particles_create(global.particle_sys, x, y, global.pt_engine, 2);
+			
+				sc_rush(target, ang_diff);
+			} else {
+				if rush {
+					if rushing < 240 {
+						rushing++;
+					} else {
+						rush = false;
+						rushing = 0;
+					}
+				}
+				sc_push(target);
+			}
+		}
+	}
+
+	//marauder ai
+	else if enemy_type = "marauder" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} if distance_to_object(target) >= 180*global.scale*target.size {
+				sc_push(target);
+			} else {
+				sc_marauder(target);
+			}
+		}
+	}
+
+	//sniper ai (ranger)
+	else if enemy_type = "sniper" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} if distance_to_object(target) >= 520*global.scale*target.size {
+				sc_push(target);
+			} else if distance_to_object(target) < 260*global.scale*target.size {
+				sc_back(target);
+			} else {
+				sc_snipe(target);
+			}
+		}
+	}
+
+	//gunship ai
+	else if enemy_type = "gunship" {
+		if target != noone {
+			if distance_to_object(target) >= 180*global.scale {
+				sc_push(target);
+			} else if distance_to_object(target) < 180*global.scale {
+				sc_gunship(target);
+			}
+		}
+	}
+
+	//shotgunner ai
+	else if enemy_type = "shotgunner" {
+		if target != noone {
+			if distance_to_object(target) >= 180*global.scale {
+				sc_push(target);
+			} else if distance_to_object(target) < 180*global.scale {
+				sc_shotgunner(target);
+			}
+		}
+	}
+
+	//ion ai
+	else if enemy_type = "ion" {
+		if target != noone {
+			if follow = true {
+				if instance_exists(following) {
+					sc_follow();
+				} else follow = false;
+			} else if distance_to_object(target) >= 90*global.scale*target.size {
+				sc_push(target);
+			} else if distance_to_object(target) < 90*global.scale*target.size {
+				sc_suicide(target);
+			}
+		}
+	}
+
+	//destroyer ai
+	else if enemy_type = "destroyer" {
+		if target != noone {
+			if distance_to_object(target) >= 180*global.scale {
+				sc_push(target);
+			} else if distance_to_object(target) < 180*global.scale {
+				sc_destroyer(target);
+			}
+		}
+	}
+
+
+	//swarmer ai
+	else if enemy_type = "swarmer" {
+		if follow = true and instance_exists(target) {
 			if instance_exists(following) {
-				sc_follow();
+				sc_swarm();
 			} else follow = false;
-		} if distance_to_object(target) >= 180*global.scale*target.size {
-			sc_push(target);
-		} else {
-			sc_marauder(target);
 		}
 	}
-}
 
-//sniper ai (ranger)
-else if enemy_type = "sniper" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		} if distance_to_object(target) >= 520*global.scale*target.size {
-			sc_push(target);
-		} else if distance_to_object(target) < 260*global.scale*target.size {
-			sc_back(target);
-		} else {
-			sc_snipe(target);
+
+	//heavy cruiser ai
+	else if enemy_type = "heavy_cruiser" {
+		if target != noone {
+			if distance_to_object(target) >= 180*global.scale {
+				sc_push(target);
+			} else if distance_to_object(target) < 180*global.scale {
+				sc_destroyer(target);
+			}
+			if reactor_active[1] = false && reactor_active[2] = false {
+				instance_destroy();
+			}
 		}
 	}
-}
 
-//gunship ai
-else if enemy_type = "gunship" {
-	if target != noone {
-		if distance_to_object(target) >= 180*global.scale {
-			sc_push(target);
-		} else if distance_to_object(target) < 180*global.scale {
-			sc_gunship(target);
+	//heavy cruiser ai
+	else if enemy_type = "battlecruiser" {
+		if target != noone {
+			if distance_to_object(target) >= 270*global.scale {
+				sc_push(target);
+			} else if distance_to_object(target) < 270*global.scale {
+				sc_destroyer(target);
+			}
+			if reactor_active[1] = false && reactor_active[2] = false
+			&& reactor_active[3] = false && reactor_active[4] = false {
+				instance_destroy();
+			}
 		}
 	}
-}
 
-//shotgunner ai
-else if enemy_type = "shotgunner" {
-	if target != noone {
-		if distance_to_object(target) >= 180*global.scale {
-			sc_push(target);
-		} else if distance_to_object(target) < 180*global.scale {
-			sc_shotgunner(target);
-		}
-	}
-}
-
-//ion ai
-else if enemy_type = "ion" {
-	if target != noone {
-		if follow = true {
-			if instance_exists(following) {
-				sc_follow();
-			} else follow = false;
-		} else if distance_to_object(target) >= 90*global.scale*target.size {
+	else {
+		show_debug_message("No AI for " + string(enemy_type))
+		if distance_to_object(target) >= 90*global.scale*target.size {
 			sc_push(target);
 		} else if distance_to_object(target) < 90*global.scale*target.size {
-			sc_suicide(target);
+			sc_back(target);
 		}
 	}
-}
 
-//destroyer ai
-else if enemy_type = "destroyer" {
-	if target != noone {
-		if distance_to_object(target) >= 180*global.scale {
-			sc_push(target);
-		} else if distance_to_object(target) < 180*global.scale {
-			sc_destroyer(target);
+	if enemy_type = "rusher" and rush {
+		x_speed = clamp(x_speed * global.fric, -global.spd*max_speed*1.5, global.spd*max_speed*1.5);
+		y_speed = clamp(y_speed * global.fric, -global.spd*max_speed*1.5, global.spd*max_speed*1.5);
+
+		x += x_speed*global.scale;
+		y += y_speed*global.scale;
+	} else {
+		x_speed = clamp(x_speed * global.fric, -global.spd*max_speed, global.spd*max_speed);
+		y_speed = clamp(y_speed * global.fric, -global.spd*max_speed, global.spd*max_speed);
+
+		x += x_speed*global.scale;
+		y += y_speed*global.scale;
+	}
+} else if idle {
+	if instance_exists(parent) {
+		x = parent.x + x_start*global.scale;
+		y = parent.y + y_start*global.scale;
+	} else {
+		points = 0;
+		instance_destroy();
+	}
+	
+	if deploy > 0 {
+		if deploy_move {
+			x_start += lengthdir_x(1, image_angle)/global.scale;
+			y_start += lengthdir_y(1, image_angle)/global.scale;
+		}
+		deploy--;
+		
+		if deploy = 0 {
+			idle = false;
+			depth = layer_get_depth("Instances_Top");
+		}
+	} else {
+		if instance_exists(o_player_drone) {
+			if distance_to_object(instance_nearest(x, y, o_player_drone)) < distance_to_object(o_player) {
+				target = instance_nearest(x, y, o_player_drone);
+			} else if instance_exists(o_player) {
+				target = o_player;
+			} else target = noone;
+		} else if instance_exists(o_player) {
+			target = o_player;
+		} else target = noone;
+	
+		if target != noone {
+			if distance_to_object(target) <= idle_activation_range*global.scale {
+				idle = false;
+			}
 		}
 	}
-}
-
-
-//swarmer ai
-else if enemy_type = "swarmer" {
-	if follow = true and instance_exists(target) {
-		if instance_exists(following) {
-			sc_swarm();
-		} else follow = false;
-	}
-}
-
-
-//heavy cruiser ai
-else if enemy_type = "heavy_cruiser" {
-	if target != noone {
-		if distance_to_object(target) >= 180*global.scale {
-			sc_push(target);
-		} else if distance_to_object(target) < 180*global.scale {
-			sc_destroyer(target);
-		}
-		if reactor_active[1] = false && reactor_active[2] = false {
-			instance_destroy();
-		}
-	}
-}
-
-//heavy cruiser ai
-else if enemy_type = "battlecruiser" {
-	if target != noone {
-		if distance_to_object(target) >= 270*global.scale {
-			sc_push(target);
-		} else if distance_to_object(target) < 270*global.scale {
-			sc_destroyer(target);
-		}
-		if reactor_active[1] = false && reactor_active[2] = false
-		&& reactor_active[3] = false && reactor_active[4] = false {
-			instance_destroy();
-		}
-	}
-}
-
-else {
-	show_debug_message("No AI for " + string(enemy_type))
-	if distance_to_object(target) >= 90*global.scale*target.size {
-		sc_push(target);
-	} else if distance_to_object(target) < 90*global.scale*target.size {
-		sc_back(target);
-	}
-}
-}
-
-if enemy_type = "rusher" and rush {
-	x_speed = clamp(x_speed * global.fric, -global.spd*max_speed*1.5, global.spd*max_speed*1.5);
-	y_speed = clamp(y_speed * global.fric, -global.spd*max_speed*1.5, global.spd*max_speed*1.5);
-
-	x += x_speed*global.scale;
-	y += y_speed*global.scale;
-} else {
-	x_speed = clamp(x_speed * global.fric, -global.spd*max_speed, global.spd*max_speed);
-	y_speed = clamp(y_speed * global.fric, -global.spd*max_speed, global.spd*max_speed);
-
-	x += x_speed*global.scale;
-	y += y_speed*global.scale;
 }

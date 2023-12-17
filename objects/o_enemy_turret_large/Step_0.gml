@@ -1,5 +1,7 @@
-if hp <= 0 || !instance_exists(pt) {
-	part_particles_create(global.particle_sys, x, y, enemy_type_particle, 30*size);
+if hp <= 0 {
+	instance_destroy();
+} else if !instance_exists(pt) {
+	if on_station and global.station_destroyed = false points = 0;
 	instance_destroy();
 }
 
@@ -26,27 +28,39 @@ if instance_exists(pt) {
 		}
 	}
 	
-	var x1 = pt.x;
-	var y1 = pt.y;
-	var x2 = pt.x + sprite_width + _x;
-	var y2 = pt.y + _y;
+	if !on_station {
+		var x1 = pt.x;
+		var y1 = pt.y;
+		var x2 = pt.x + sprite_width + _x;
+		var y2 = pt.y + _y;
 
-	var tdist = point_distance(x1, y1, x2, y2);
-	var tdir  = point_direction(x1, y1, x2, y2) + pt.image_angle;
+		var tdist = point_distance(x1, y1, x2, y2);
+		var tdir  = point_direction(x1, y1, x2, y2) + pt.image_angle;
 
-	x = x1 + lengthdir_x(tdist, tdir);
-	y = y1 + lengthdir_y(tdist, tdir);
+		x = x1 + lengthdir_x(tdist, tdir);
+		y = y1 + lengthdir_y(tdist, tdir);
+	} else { //is on station
+		if instance_exists(pt) {
+			x = pt.x + x_start*global.scale;
+			y = pt.y + y_start*global.scale;
+		}
+	}
 	
-	if instance_exists(target) var ang_diff = -angle_difference(direction, point_direction(x, y, target.x, target.y));
+	if instance_exists(target) {
+		if leading_shot var ang_diff = sc_angdiff_smart(1, target);
+		else var ang_diff = -angle_difference(direction, point_direction(x, y, target.x, target.y));
+	}
 
-	turn_acceleration = clamp(ang_diff/45, -.25, .25);
+	turn_acceleration = clamp(ang_diff/45, -.25*max_turn_acceleration, .25*max_turn_acceleration);
 	turn_speed = clamp((turn_speed + turn_acceleration) * (global.fric - .08), -max_turn_speed, max_turn_speed);
 	
 	direction += turn_speed;
 	image_angle = direction;
-
-	x_speed = pt.x_speed;
-	y_speed = pt.y_speed;
+	
+	if !on_station {
+		x_speed = pt.x_speed;
+		y_speed = pt.y_speed;
+	}
 
 	sc_shoot(ang_diff);
 	

@@ -17,7 +17,7 @@ function sc_spawn_enemy(_spawn_level) {
 					
 					while !spawn || (_x - o_player.x < view_wport[0]/2 && _x - o_player.x > -view_wport[0]/2 && _y - o_player.y > -view_hport[0]/2 && _y - o_player.y < view_hport[0]/2) || _y < 0 || _y > room_height {
 						var _a = irandom(359);
-						var _d = irandom_range(600*global.scale, 800*global.scale);
+						var _d = irandom_range(600*global.scale, 1200*global.scale);
 						var _x = lengthdir_x(_d, _a) + o_player.x;
 						var _y = lengthdir_y(_d, _a) + o_player.y;
 						var _x2 = lengthdir_x(_d+40, _a) + o_player.x;
@@ -30,9 +30,9 @@ function sc_spawn_enemy(_spawn_level) {
 							else var spawn = true;
 						} else var spawn = true;
 					}
-					var _enemy1 = instance_create_layer(_x, _y, "Instances", enemy[_r][0]);
-					var _enemy2 = instance_create_layer(_x2, _y2, "Instances", enemy[_r][0]);
-					var _enemy3 = instance_create_layer(_x3, _y3, "Instances", enemy[_r][0]);
+					var _enemy1 = instance_create_layer(_x, _y, "Instances_Top", enemy[_r][0]);
+					var _enemy2 = instance_create_layer(_x2, _y2, "Instances_Top", enemy[_r][0]);
+					var _enemy3 = instance_create_layer(_x3, _y3, "Instances_Top", enemy[_r][0]);
 				
 					enemy[_r][2] *= .8;
 				
@@ -100,7 +100,7 @@ function sc_spawn_enemy(_spawn_level) {
 							else var spawn = true;
 						} else var spawn = true;
 					}
-					var _enemy = instance_create_layer(_x, _y, "Instances", enemy[_r][0]);
+					var _enemy = instance_create_layer(_x, _y, "Instances_Top", enemy[_r][0]);
 					enemy[_r][2] *= .8;
 				
 					_spawn_level -= enemy[_r][1];
@@ -142,7 +142,7 @@ function sc_spawn_enemy(_spawn_level) {
 					else var spawn = true;
 				} else var spawn = true;
 			}
-			var _enemy = instance_create_layer(_x, _y, "Instances", choose(o_enemy_basic, o_enemy_suicider));
+			var _enemy = instance_create_layer(_x, _y, "Instances_Top", choose(o_enemy_basic, o_enemy_suicider));
 			_enemy.upgrades = 0;
 			_spawn_level = 0;
 		}

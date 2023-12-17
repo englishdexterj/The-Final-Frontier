@@ -122,7 +122,7 @@ for (var i = 0; i < array_length(enemy); i++) {
 			} else var spawn = true;
 		}
 		
-		var _e = instance_create_layer(_x, _y, "Instances", enemy[i][0]);
+		var _e = instance_create_layer(_x, _y, "Instances_Top", enemy[i][0]);
 		_e.upgrades = 0;
 		
 		_spawn_level -= enemy[i][1];

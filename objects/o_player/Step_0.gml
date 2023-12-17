@@ -80,7 +80,7 @@ if weapon_lasers > 0 {
 		laser_cooldown = true;
 		laser_heat += 10;
 		alarm_set(6, 5);
-		with instance_create_layer(x, y, "Instances", o_laser) {
+		with instance_create_layer(x, y, "Shots", o_laser) {
 			enemy_type = "Player";
 			flank = false;
 			plated = false;
@@ -99,7 +99,7 @@ if weapon_lasers > 0 {
 		}
 		
 		if flank_laser = true {
-			with instance_create_layer(x, y, "Instances", o_laser) {
+			with instance_create_layer(x, y, "Shots", o_laser) {
 				enemy_type = "Player";
 				flank = true;
 				plated = false;
@@ -127,7 +127,7 @@ if weapon_missiles > 0 {
 		missile_heat += 10;
 		alarm_set(5, 5);
 		for (var i = 0; i < weapon_missiles; i++) {
-			with instance_create_layer(x, y, "Instances", o_missile) {
+			with instance_create_layer(x, y, "Shots", o_missile) {
 				enemy_type = "Player";
 				if other.plated_missile plated = true;
 				else plated = false;
@@ -183,7 +183,7 @@ if weapon_bullets > 0 {
 		heat += bullet_heat + (weapon_bullets-1)*bullet_heat/2;
 		alarm_set(0, bullet_reload);
 		for (var i = 0; i < weapon_bullets; i++) {
-			with instance_create_layer(x + lengthdir_x(6, direction), y + lengthdir_y(6, direction), "Instances", o_bullet) {
+			with instance_create_layer(x + lengthdir_x(6, direction), y + lengthdir_y(6, direction), "Shots", o_bullet) {
 				plated = false;
 				enemy = false;
 				bullet_color = c_white;
@@ -248,7 +248,7 @@ if weapon_ion > 0 {
 		ion_heat += 2;
 		alarm_set(7, 5);
 		for (var i = 0; i < weapon_ion; i++) {
-			with instance_create_layer(x + lengthdir_x(8, direction), y + lengthdir_y(8, direction), "Instances", o_ion_beam) {
+			with instance_create_layer(x + lengthdir_x(8, direction), y + lengthdir_y(8, direction), "Shots", o_ion_beam) {
 				plated = false;
 				enemy = false;
 				bullet_color = c_white;
@@ -306,7 +306,7 @@ if drone_ship && drones < drones_max && drone_cooldown = false && drone_heat = 0
 		}
 	}
 		
-	var _s = instance_create_layer(x, y, "Instances", o_player_drone);
+	var _s = instance_create_layer(x, y, "Instances_Top", o_player_drone);
 	_s.direction = irandom_range(0, 359);
 	_s.image_angle = _s.direction;
 	_s.ai = drone_ai;
@@ -333,7 +333,7 @@ if flak {
 			flak_cooldown = true;
 			flak_heat += .5;
 			alarm_set(2, flak_speed);
-			with instance_create_layer(x, y, "Instances", o_flak) {
+			with instance_create_layer(x, y, "Shots", o_flak) {
 				enemy_type = "Player";
 				enemy = false;
 				bullet_color = c_ltgray;
@@ -379,7 +379,7 @@ if missile_defense {
 			missile_flak_cooldown = true;
 			missile_flak_heat += 1;
 			alarm_set(10, 8);
-			with instance_create_layer(x, y, "Instances", o_missile_flak) {
+			with instance_create_layer(x, y, "Shots", o_missile_flak) {
 				enemy_type = "Player";
 				enemy = false;
 				bullet_color = c_blue;

@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.748016,
+  "duration": 0.743016,
   "parent": {
     "name": "Level Up 2",
     "path": "folders/Sounds/Level Up 2.yy",

@@ -7,6 +7,7 @@
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy","path":"objects/o_enemy/o_enemy.yy",},"propertyId":{"name":"enemy_type","path":"objects/o_enemy/o_enemy.yy",},"value":"swarmer",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy","path":"objects/o_enemy/o_enemy.yy",},"propertyId":{"name":"points","path":"objects/o_enemy/o_enemy.yy",},"value":"25",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy","path":"objects/o_enemy/o_enemy.yy",},"propertyId":{"name":"cooldown_speed","path":"objects/o_enemy/o_enemy.yy",},"value":".1",},
   ],
   "parent": {
     "name": "Enemies",

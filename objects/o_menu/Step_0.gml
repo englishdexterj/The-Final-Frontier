@@ -6,7 +6,11 @@ if !pause && os_is_paused() {
 if steam_initialised() {
 	if steam_stats_ready() && steam_is_overlay_enabled() {
 		global.steam_api = true;
+	} else {
+		global.steam_api = false;
 	}
+} else {
+	global.steam_api = false;
 }
 
 #region wave alpha

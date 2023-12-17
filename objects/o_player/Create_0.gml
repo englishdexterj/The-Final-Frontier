@@ -3,6 +3,10 @@ image_yscale = image_xscale;
 
 image_index = global.color_modifier[global.selected_character];
 
+depth--;
+
+invincible = false;
+
 upgrade_string = "";
 
 weapon_bullets = 0;
@@ -122,8 +126,7 @@ if global.selected_character = 0 { //fighter
 	rammer = true;
 	rammer_cooldown_speed = 4;
 	has_shield = true;
-	var _s = instance_create_layer(x, y, "Instances", o_shield);
-	_s.depth = -10;
+	var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
 	_s.shield_size = o_player.shield_size;
 	_s.max_hit_times = o_player.shield_hits;
 	_s.pt = o_player.id;
