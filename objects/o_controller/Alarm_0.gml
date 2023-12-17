@@ -4,6 +4,12 @@ round_intermission = false;
 o_menu.wave_alpha = 1;
 
 global.spawn_level += 1;
+
+if global.cheats = false && global.steam_api = true and instance_exists(o_player) var _stats = true;
+else var _stats = false;
+
+if _stats and global.spawn_level-1 > steam_get_stat_int("highest_wave") steam_set_stat_int("highest_wave", global.spawn_level-1);
+
 var _spawn_level = (global.spawn_level + (global.spawn_level/4)*enemy_spawn_boost)/5;
 
 enemy[0][0] = o_enemy_basic; //type

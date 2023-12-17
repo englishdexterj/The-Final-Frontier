@@ -8,6 +8,8 @@ function sc_draw_menu_stats(start_x, start_y) {
 		draw_text(start_x + 1536/2, start_y + stats_adjust_y - 64, "Stats");
 		draw_set_halign(fa_left);
 		
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "record_points"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("record_points")); _add_y += 64; _add_x = 0;
+		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "highest_wave"); _add_x += 1536	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("highest_wave")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_kills"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_kills")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_rounds"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_rounds")); _add_y += 64; _add_x = 0;
 		draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, "total_deaths"); _add_x += 1536;	draw_text(start_x + _add_x, start_y + stats_adjust_y + _add_y, steam_get_stat_int("total_deaths")); _add_y += 64; _add_x = 0;

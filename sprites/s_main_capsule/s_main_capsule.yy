@@ -26,7 +26,7 @@
   "origin": 0,
   "parent": {
     "name": "Capsules",
-    "path": "folders/Sprites/Capsules.yy",
+    "path": "folders/Sprites/1 Steam/Capsules.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

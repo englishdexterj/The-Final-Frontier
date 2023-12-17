@@ -106,4 +106,6 @@ audio_play_sound(_audio, 10, false);
 
 global.pts += points*global.xp_gain;
 
+if global.cheats = false && global.steam_api = true and instance_exists(o_player) and global.pts > steam_get_stat_int("record_points") steam_set_stat_int("record_points", global.pts);
+
 ready = true;

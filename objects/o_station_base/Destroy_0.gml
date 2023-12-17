@@ -26,5 +26,7 @@ for (var i = 0; i < 6; i++) {
 		image_yscale = global.scale;
 		alpha = 2 * random_range(.8, 1.2);
 		destroy_timer = 300;
+		audio = true;
+		type = "station";
 	}
 }

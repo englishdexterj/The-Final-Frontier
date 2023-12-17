@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.585522,
   "parent": {
-    "name": "Explosion",
-    "path": "folders/Sounds/Explosion.yy",
+    "name": "Short",
+    "path": "folders/Sounds/Explosion/Short.yy",
   },
   "preload": false,
   "sampleRate": 44100,

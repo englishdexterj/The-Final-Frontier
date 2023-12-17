@@ -77,10 +77,10 @@ switch enemy_type {
 	case "gunship":
 		var _e_type = 7;
 		break;
-	case "shotgunner":
+	case "destroyer":
 		var _e_type = 8;
 		break;
-	case "destroyer":
+	case "shotgunner":
 		var _e_type = 9;
 		break;
 	case "swarmer":
@@ -97,6 +97,8 @@ switch enemy_type {
 		var _e_type = -1;
 		break;
 }
+
+show_debug_message(string(enemy_type) + " Killed");
 
 if _e_type != -1 {
 	with o_menu {
