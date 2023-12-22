@@ -8,6 +8,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"weapon_type","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"laser",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"max_turn_speed","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":".6",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"enemy_type","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"turret_laser",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"max_range","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"3000",},
   ],
   "parent": {
     "name": "Enemies",

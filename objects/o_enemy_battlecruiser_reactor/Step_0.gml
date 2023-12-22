@@ -1,3 +1,8 @@
+if hp <= 0 {
+	hp = 0;
+	instance_destroy();
+}
+
 if instance_exists(pt) {
 	var x1 = pt.x;
 	var y1 = pt.y;

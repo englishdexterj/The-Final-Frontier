@@ -28,6 +28,7 @@ damage_y = 0;
 target = noone;
 
 parent = noone;
+pt = noone;
 
 flak_heat = 0;
 flak_cooldown = false;

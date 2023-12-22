@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "sfx_sounds_error1",
   "audioGroupId": {
-    "name": "ag_menu_sounds",
-    "path": "audiogroups/ag_menu_sounds",
+    "name": "audiogroup_default",
+    "path": "audiogroups/audiogroup_default",
   },
   "bitDepth": 1,
   "bitRate": 128,

@@ -36,7 +36,7 @@ if instance_exists(pt) {
 	if instance_exists(target) {
 		var ang_diff = -angle_difference(direction, point_direction(x, y, target.x, target.y));
 
-		turn_acceleration = clamp(ang_diff/45, -.25, .25);
+		turn_acceleration = clamp(turn_acceleration_mult*(ang_diff/5)/60, -.25, .25);
 		turn_speed = clamp((turn_speed + turn_acceleration) * (global.fric - .08), -max_turn_speed, max_turn_speed);
 	
 		direction += turn_speed;

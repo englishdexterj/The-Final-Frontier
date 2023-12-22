@@ -57,7 +57,7 @@ drone_cooldown = false;
 //gun heat
 heat = 0;
 cooldown_speed = 0.2;
-laser_heat = 0;
+laser_cooldown_heat = 0;
 laser_cooldown_speed = 0.05;
 missile_heat = 0;
 missile_cooldown_speed = 0.2;
@@ -147,7 +147,7 @@ switch global.color_modifier[global.selected_character] {
 		ion_cooldown_speed *= 1.1;
 		break;
 	case colors.purple:
-		global.xp_gain = 1.05;
+		global.xp_gain = 1.1;
 		break;
 	case colors.yellow:
 		max_speed *= 1.2;

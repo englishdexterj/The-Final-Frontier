@@ -1,5 +1,4 @@
 function sc_draw_menu_bestiary(_xx, _yy, scale){
-	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
 	draw_set_font(f_score);
 

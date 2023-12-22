@@ -23,7 +23,7 @@ if target != noone and deploy = -900 {
 			
 			var _enemy = choose(o_enemy_suicider, o_enemy_suicider, o_enemy_suicider, o_enemy_rusher);
 			//with instance_create_layer(x, y, "Instances_Upper_Middle", _enemy) {
-			with instance_create_layer(x, y, "Instances_Top", _enemy) {
+			with instance_create_layer(x, y, "Instances_Upper_Middle", _enemy) {
 				image_xscale = global.scale;
 				image_yscale = image_xscale;
 				image_index = 0;
@@ -32,8 +32,7 @@ if target != noone and deploy = -900 {
 				idle = true;
 				deploy = 660;
 				deploy_move = false;
-				upgrades = 0; 
-				depth += 1;
+				depth -= 1;
 				
 				if image_angle = 0 {
 					x_start = sprite_get_width(s_station_hatch)/2;
@@ -52,6 +51,9 @@ if target != noone and deploy = -900 {
 				x = x + x_start*global.scale;
 				y = y + y_start*global.scale;
 				parent = other.id;
+				
+				global.idle_enemies++;
+				sc_station_enemy_choose_upgrades();
 			}
 			
 			activation_cooldown = true;

@@ -1,4 +1,6 @@
 function sc_initialize_menu_topscores() {
+	topscores_adjust_y = 0;
+	
 	selected_leaderboard = 0;
 	selected_column = 0;
 	

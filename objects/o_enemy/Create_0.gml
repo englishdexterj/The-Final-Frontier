@@ -1,6 +1,8 @@
 //apply upgrades
 alarm_set(10, 1);
 
+if room = game global.active_enemies++;
+
 image_xscale = global.scale;
 image_yscale = image_xscale;
 
@@ -55,6 +57,8 @@ if enemy_type = "basic" {
 	sprite_index = s_enemy_ion;
 } else if enemy_type = "bomber" {
 	sprite_index = s_enemy_bomber;
+} else if enemy_type = "sentinel" {
+	sprite_index = s_enemy_sentinel;
 } else if enemy_type = "rusher" {
 	rush = false;
 	rushing = 0;

@@ -1,6 +1,10 @@
+global.steam_api = false;
+
 sc_initialize_menu_control();
 sc_initialize_menu_topscores();
 sc_initialize_menu_stats();
+sc_initialize_menu_achievements();
+if !global.steam_api alarm_set(4, 60);
 
 //particles
 global.particle_sys = part_system_create();
@@ -10,8 +14,6 @@ sc_init_part();
 //
 
 setup = false
-
-global.steam_api = false;
 
 round_intermission = false;
 
@@ -30,12 +32,13 @@ for (var i = 0; i < 30; i++) {
 }
 
 ini_open("data.ini");
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 25; i++) {
 	top10_scores[0][i] = ini_read_real("top10_scores", string(0) + ":" + string(i), -1);
 	top10_scores[1][i] = ini_read_real("top10_scores", string(1) + ":" + string(i), -1);
 	top10_scores[2][i] = ini_read_real("top10_scores", string(2) + ":" + string(i), -1);
 	top10_scores[3][i] = ini_read_real("top10_scores", string(3) + ":" + string(i), -1);
 	top10_scores[4][i] = ini_read_string("top10_scores", string(4) + ":" + string(i), "");
+	top10_scores[5][i] = ini_read_real("top10_scores", string(5) + ":" + string(i), -1);
 }
 ini_close();
 

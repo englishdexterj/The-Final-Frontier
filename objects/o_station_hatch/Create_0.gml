@@ -14,6 +14,7 @@ with instance_create_layer(x, y, "Instances_Top", o_station_hatch_top) {
 	x_start = 0;
 	y_start = 0;
 	other.child = id;
+	depth += 1;
 }
 
 image_index = 0;

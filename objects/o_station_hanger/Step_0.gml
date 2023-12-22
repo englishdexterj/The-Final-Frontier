@@ -13,7 +13,21 @@ if instance_exists(o_player_drone) {
 if target != noone {
 	if activation_cooldown = false {
 		if distance_to_object(target) <= activation_range*global.scale {
-			with instance_create_layer(x, y, "Instances_Middle", choose(o_enemy_gunship, o_enemy_marauder, o_enemy_shotgunner, o_enemy_sniper)) {
+			if global.spawn_level >= 100 {
+				var _enemy_spawn = choose(o_enemy_gunship, o_enemy_sentinel, o_enemy_shotgunner, o_enemy_shotgunner, o_enemy_sniper);
+			} else if global.spawn_level >= 60 { //shotgunner
+				var _enemy_spawn = choose(o_enemy_marauder, o_enemy_sentinel, o_enemy_gunship, o_enemy_gunship, o_enemy_shotgunner, o_enemy_shotgunner, o_enemy_sniper);
+			} else if global.spawn_level >= 40 { //gunship
+				var _enemy_spawn = choose(o_enemy_marauder, o_enemy_marauder, o_enemy_sentinel, o_enemy_gunship, o_enemy_gunship, o_enemy_sniper);
+			} else if global.spawn_level >= 35 { //ranger
+				var _enemy_spawn = choose(o_enemy_marauder, o_enemy_marauder, o_enemy_marauder, o_enemy_sentinel, o_enemy_sniper, o_enemy_sniper);
+			} else if global.spawn_level >= 25 { //sentinel
+				var _enemy_spawn = choose(o_enemy_marauder, o_enemy_marauder, o_enemy_marauder, o_enemy_sentinel);
+			} else {
+				var _enemy_spawn = o_enemy_marauder;
+			}
+			
+			with instance_create_layer(x, y, "Instances_Middle", _enemy_spawn) {
 				image_xscale = global.scale;
 				image_yscale = image_xscale;
 				image_index = 0;
@@ -27,6 +41,8 @@ if target != noone {
 				x_start = 0;
 				y_start = 0;
 				parent = other.id;
+				global.idle_enemies++;
+				sc_station_enemy_choose_upgrades();
 			}
 			
 			lights.deploy = 1200;

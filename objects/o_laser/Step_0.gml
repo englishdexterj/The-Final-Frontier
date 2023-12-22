@@ -69,7 +69,7 @@ if type = "laser" {
 			for (var i = 0; i < ds_list_size(col_list); i++) {
 				var _enemy = ds_list_find_value(col_list, i);
 		
-				if _enemy.image_alpha = 1 && !_enemy.cloaking_active {
+				if (_enemy.object_index = o_player and !_enemy.invincible) and _enemy.image_alpha = 1 && !_enemy.cloaking_active {
 					if _enemy.flash_alpha = 0 {
 						if global.cheats = false && global.steam_api = true and instance_exists(o_player) {
 							steam_set_stat_int("total_hitby", steam_get_stat_int("total_hitby") + 1);

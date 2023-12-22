@@ -74,12 +74,13 @@ image_angle = direction;
 
 //shoot
 if weapon_lasers > 0 {
-	if laser_cooldown = false && laser_heat <= 0 && shoot_special {
+	if laser_cooldown = false && laser_cooldown_heat <= 0 && shoot_special {
 		max_turn_speed /= 6;
 		
 		laser_cooldown = true;
-		laser_heat += 10;
+		laser_cooldown_heat += 10;
 		alarm_set(6, 5);
+		/*
 		with instance_create_layer(x, y, "Shots", o_laser) {
 			enemy_type = "Player";
 			flank = false;
@@ -97,8 +98,36 @@ if weapon_lasers > 0 {
 			image_yscale = 0;
 			warmup_speed = 0.01;
 		}
+		*/
+		
+		with instance_create_layer(x, y, "Shots", o_laser_updated) {
+			destroy_timer = 420;
+			warmup_speed = 1/2*1/60;
+			
+			enemy_type = other.enemy_type;
+			enemy = other.enemy;
+					
+			laser_length = 2*960*global.scale;
+			laser_width = 0;
+			laser_width_max = 8*global.scale;
+
+			image_xscale = global.scale;
+			image_yscale = global.scale;
+			image_alpha = 0;
+			direction = other.direction;
+			image_angle = other.image_angle;
+
+			tick_damage = 0;
+
+			pt = other.id;
+			depth = pt.depth + 1;
+
+			_x = 0;
+			_y = 0;
+		}
 		
 		if flank_laser = true {
+			/*
 			with instance_create_layer(x, y, "Shots", o_laser) {
 				enemy_type = "Player";
 				flank = true;
@@ -113,6 +142,33 @@ if weapon_lasers > 0 {
 				image_angle = other.image_angle;
 				image_xscale = -10*global.scale;
 				image_yscale = 0;
+			}
+			*/
+			
+			with instance_create_layer(x, y, "Shots", o_laser_updated) {
+				destroy_timer = 420;
+				warmup_speed = 1/2*1/60;
+				
+				enemy_type = other.enemy_type;
+				enemy = other.enemy;
+					
+				laser_length = 2*960*global.scale;
+				laser_width = 0;
+				laser_width_max = 8*global.scale;
+
+				image_xscale = global.scale;
+				image_yscale = global.scale;
+				image_alpha = 0;
+				direction = other.direction;
+				image_angle = other.image_angle;
+
+				tick_damage = 0;
+
+				pt = other.id;
+				depth = pt.depth + 1;
+
+				_x = 0;
+				_y = 0;
 			}
 		}
 	}

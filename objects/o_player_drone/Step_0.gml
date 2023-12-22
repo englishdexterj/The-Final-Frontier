@@ -7,6 +7,10 @@ if flash_alpha > 0 {
 	flash_alpha -= .05;
 }
 
+if laser_heat > 0 {
+	laser_heat -= (.5)*1/5*1/60;
+}
+
 //switch side of map
 if !instance_exists(o_player) {
 	if x > room_width + 256 and (direction < 90 or direction > 270) {
@@ -70,6 +74,9 @@ if !disabled {
 			sc_drone_push(target);
 		} else if target != noone and distance_to_object(target) < 90*global.scale {
 			sc_drone_back(target);
+		} else if instance_exists(o_player) {
+			var _player = instance_nearest(x, y, o_player);
+			sc_drone_push(_player);
 		}
 	} else if ai = 1 {
 	

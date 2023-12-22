@@ -1,5 +1,36 @@
 function sc_init_part() {
 	#region Explosion Particle
+	//mine enemy
+	var _pme = part_type_create();
+	part_type_shape(_pme, pt_shape_circle);
+	part_type_life(_pme, 30, 30);
+	part_type_alpha2(_pme, 1, 0);
+	part_type_speed(_pme, 0, 0, 0, 0);
+	part_type_direction(_pme, 0, 359, 0, 0);
+	part_type_orientation(_pme, 0, 359, 0, 0, false);
+	part_type_scale(_pme, 1, 1);
+	part_type_size(_pme, 1, 1, 1, 0);
+	
+	part_type_color2(_pme, make_color_rgb(255, 55, 55), make_color_rgb(55, 0, 0));
+	
+	global.pt_mine_enemy = _pme;
+	//
+	
+	//mine friendly
+	var _pm = part_type_create();
+	part_type_shape(_pm, pt_shape_circle);
+	part_type_life(_pm, 30, 30);
+	part_type_alpha2(_pm, 1, 0);
+	part_type_speed(_pm, 0, 0, 0, 0);
+	part_type_direction(_pm, 0, 359, 0, 0);
+	part_type_orientation(_pm, 0, 359, 0, 0, false);
+	part_type_scale(_pm, 1, 1);
+	part_type_size(_pm, 1, 1, 1, 0);
+	
+	part_type_color2(_pm, make_color_rgb(255, 255, 255), c_white);
+	
+	global.pt_mine = _pm;
+	//
 	
 	//shield glow
 	var _sg = part_type_create();
@@ -271,6 +302,21 @@ function sc_init_part() {
 	part_type_color2(_ps, make_color_rgb(255, 0, 0), c_white);
 	
 	global.pt_suicider = _ps;
+	//
+	
+	//sentinel
+	var _psen = part_type_create();
+	part_type_sprite(_psen, s_triangle, false, false, false);
+	part_type_life(_psen, 20, 60);
+	part_type_alpha2(_psen, 1, 0);
+	part_type_speed(_psen, 0, 20*global.spd*global.scale, 0, 0);
+	part_type_direction(_psen, 0, 359, 0, 0);
+	part_type_orientation(_psen, 0, 359, 0, 0, false);
+	part_type_scale(_psen, 1.5*global.scale, 1.5*global.scale);
+	
+	part_type_color2(_psen, make_color_rgb(255, 0, 0), c_white);
+	
+	global.pt_sentinel = _psen;
 	//
 	
 	//gunship

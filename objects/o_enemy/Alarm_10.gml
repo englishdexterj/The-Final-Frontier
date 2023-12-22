@@ -34,7 +34,7 @@ if variable_instance_exists(id, "upgrades") {
 			_s.enemy = true;
 			_s.shield_regen = 0.01;
 		}
-		if object_index = o_enemy_suicider smart = true;
+		if object_index = o_enemy_suicider move_smart = true;
 	} else if upgrades = 1 {
 		image_index = 1;
 		max_speed *= 1.15;
@@ -53,7 +53,7 @@ if variable_instance_exists(id, "upgrades") {
 			_s.shield_regen = 0.005;
 		}
 	
-		if object_index = o_enemy_suicider smart = true;
+		if object_index = o_enemy_suicider move_smart = true;
 	} else {
 		if can_have_shield and has_shield {
 			var _s = instance_create_layer(x, y, "Instances_Top", o_shield);

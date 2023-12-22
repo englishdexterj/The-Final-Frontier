@@ -37,9 +37,9 @@ if ready {
 		if 1=2 and original {
 			shader_set(sh_glisten_background);
 			gpu_set_blendmode(bm_normal);
-			shader_set_uniform_f(shader_time, time);
-			shader_set_uniform_f(shader_glisten, 1);
-			shader_set_uniform_f(shader_alpha, clamp(alpha, 0, 1));
+			shader_set_uniform_f(shader_time2, time);
+			shader_set_uniform_f(shader_glisten2, 1);
+			shader_set_uniform_f(shader_alpha2, clamp(alpha, 0, 1));
 			draw_sprite_ext(s_points, subimage, x, y, scale, scale, image_angle, c_white, 1);
 			shader_reset();
 		} else {
@@ -54,9 +54,9 @@ if ready {
 	} else if points >= 800 {
 		shader_set(sh_glisten_background);
 		gpu_set_blendmode(bm_normal);
-		shader_set_uniform_f(shader_time, time);
-		shader_set_uniform_f(shader_glisten, 1);
-		shader_set_uniform_f(shader_alpha, clamp(alpha, 0, 1));
+		shader_set_uniform_f(shader_time2, time);
+		shader_set_uniform_f(shader_glisten2, 1);
+		shader_set_uniform_f(shader_alpha2, clamp(alpha, 0, 1));
 		draw_sprite_ext(s_points, subimage, x, y, scale, scale, image_angle, c_white, 1);
 		shader_reset();
 	} else if points >= 200 {

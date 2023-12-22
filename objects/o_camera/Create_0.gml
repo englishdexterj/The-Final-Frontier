@@ -23,3 +23,7 @@ surface_resize(application_surface, 2560, 1440);
 
 global.width = camera_get_view_width(0);
 global.height = camera_get_view_height(0);
+
+background_index = global.background_color;
+decrease_alpha = 0;
+next_background_wave = 20;

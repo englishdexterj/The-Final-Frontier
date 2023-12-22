@@ -1,5 +1,5 @@
 /// @description shield if parent has shield
-if !on_station and pt.has_shield {
+if !on_station and !testing and pt.has_shield {
 	var _s = instance_create_layer(x, y, "Instances_Top", o_shield);
 	_s.depth = -10;
 	_s.shield_size = pt.shield_size;

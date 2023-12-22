@@ -2,10 +2,9 @@ function sc_gunship(target) {
 	//check for movement
 	forward = 1;
 	
-	if smart var ang_diff = sc_angdiff_smart(1, target);
-	else var ang_diff = sc_angdiff(1, target);
+	var ang_diff = sc_get_angdiff(target);
 	
-	if move_smart ang_diff = sc_move_smart(ang_diff, target, 1);
+	if move_avoidance ang_diff = sc_move_avoidance(ang_diff, target, 1);
 	else {
 		sc_shoot(ang_diff);
 	}
@@ -16,7 +15,7 @@ function sc_gunship(target) {
 	x_speed += lengthdir_x(acceleration + abs(clamp(ang_diff/5,-.2, .2)), direction);
 	y_speed += lengthdir_y(acceleration + abs(clamp(ang_diff/5,-.2, .2)), direction);
 	
-	turn_acceleration = clamp(ang_diff/45, -turn_acc, turn_acc);
+	turn_acceleration = clamp(turn_acceleration_mult*(ang_diff/5)/60, -turn_acc, turn_acc);
 	turn_speed = clamp((turn_speed + turn_acceleration) * (global.fric - .08), -max_turn_speed, max_turn_speed);
 	
 	direction += turn_speed;

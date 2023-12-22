@@ -14,6 +14,8 @@ function sc_shoot(ang_diff) {
 		sc_shoot_sniper(ang_diff);
 	} else if weapon_type = "station_bullet" {
 		sc_shoot_station_bullet(ang_diff);
+	} else if weapon_type = "mine" {
+		sc_shoot_lay_mine(ang_diff);
 	}
 	
 	if flak = true {

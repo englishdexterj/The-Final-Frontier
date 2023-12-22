@@ -1,6 +1,6 @@
 if hp <= 0 {
 	instance_destroy();
-} else if !instance_exists(pt) {
+} else if !instance_exists(pt) and !testing {
 	if on_station and global.station_destroyed = false points = 0;
 	instance_destroy();
 }
@@ -9,7 +9,7 @@ if flash_alpha > 0 {
 	flash_alpha -= .05;
 }
 
-if instance_exists(pt) {
+if instance_exists(pt) or testing {
 	if instance_exists(o_player_drone) {
 		if distance_to_object(instance_nearest(x, y, o_player_drone)) < distance_to_object(o_player) {
 			target = instance_nearest(x, y, o_player_drone);
@@ -28,7 +28,11 @@ if instance_exists(pt) {
 		}
 	}
 	
-	if !on_station {
+	if target != noone and distance_to_object(target) > max_range*global.scale target = noone;
+	
+	if testing {
+		
+	} else if !on_station {
 		var x1 = pt.x;
 		var y1 = pt.y;
 		var x2 = pt.x + sprite_width + _x;
@@ -39,7 +43,7 @@ if instance_exists(pt) {
 
 		x = x1 + lengthdir_x(tdist, tdir);
 		y = y1 + lengthdir_y(tdist, tdir);
-	} else { //is on station
+	} else if on_station { //is on station
 		if instance_exists(pt) {
 			x = pt.x + x_start*global.scale;
 			y = pt.y + y_start*global.scale;
@@ -47,22 +51,21 @@ if instance_exists(pt) {
 	}
 	
 	if instance_exists(target) {
-		if leading_shot var ang_diff = sc_angdiff_smart(1, target);
-		else var ang_diff = -angle_difference(direction, point_direction(x, y, target.x, target.y));
-	}
+		var ang_diff = sc_get_angdiff(target);
+	} else var ang_diff = 180;
 
-	turn_acceleration = clamp(ang_diff/45, -.25*max_turn_acceleration, .25*max_turn_acceleration);
+	turn_acceleration = clamp(turn_acceleration_mult*(ang_diff/5)/60, -.25*max_turn_acceleration, .25*max_turn_acceleration);
 	turn_speed = clamp((turn_speed + turn_acceleration) * (global.fric - .08), -max_turn_speed, max_turn_speed);
 	
 	direction += turn_speed;
 	image_angle = direction;
 	
-	if !on_station {
+	if !on_station and !testing {
 		x_speed = pt.x_speed;
 		y_speed = pt.y_speed;
 	}
 
 	sc_shoot(ang_diff);
 	
-	if !instance_place(x, y, pt) instance_destroy();
+	if !instance_place(x, y, pt) and !testing instance_destroy();
 }

@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.675476,
+  "duration": 0.670476,
   "parent": {
     "name": "Explosion Hurt",
     "path": "folders/Sounds/Explosion Hurt.yy",

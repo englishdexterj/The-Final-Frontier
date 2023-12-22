@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 2.047109,
+  "duration": 2.042109,
   "parent": {
     "name": "Destroyed",
     "path": "folders/Sounds/Destroyed.yy",

@@ -30,7 +30,7 @@ if levelup_available {
 #endregion
 
 if global.spawn_level = 0 {
-	draw_set_alpha(start_alpha);
+	draw_set_alpha(clamp(wave_alpha*2, 0, 1));
 	draw_set_color(c_red);
 	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 256, string(character[global.selected_character][0]));
 	draw_set_color(c_white);
@@ -38,32 +38,25 @@ if global.spawn_level = 0 {
 	draw_set_alpha(1);
 }
 
+draw_set_color(c_red);
 if global.spawn_level = 1 {
-	draw_set_color(c_red);
-	draw_set_alpha(wave_alpha);
+	draw_set_alpha(clamp(wave_alpha*2, 0, 1));
 	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "WAVE");
-	draw_set_alpha(1);
-	draw_set_color(c_white);
 } else if global.asteroid_level = global.spawn_level {
-	draw_set_color(c_red);
-	draw_set_alpha(wave_alpha*4);
+	draw_set_alpha(clamp(wave_alpha*8, 0, 1));
 	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "ASTEROIDS");
-	draw_set_alpha(1);
-	draw_set_color(c_white);
 } else if global.station_level = global.spawn_level {
-	draw_set_color(c_red);
-	draw_set_alpha(wave_alpha*4);
-	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "ENEMY STATION");
-	draw_set_alpha(1);
-	draw_set_color(c_white);
+	draw_set_alpha(clamp(wave_alpha*8, 0, 1));
+	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 128, "ENEMY STATION");
+	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "DO NOT APPROACH");
 } else if global.spawn_level = global.next_boss_wave {
-	draw_set_color(c_red);
-	draw_set_alpha(wave_alpha*4);
+	draw_set_alpha(clamp(wave_alpha*16, 0, 1));
 	draw_text(display_get_gui_width()/2, display_get_gui_height()/2 - 128 - 64, "BOSS");
-	draw_set_alpha(1);
-	draw_set_color(c_white);
 }
-draw_text_color(display_get_gui_width()/2, display_get_gui_height()/2 - 128, global.spawn_level, c_white, c_white, c_white, c_white, wave_alpha);
+
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_text_color(display_get_gui_width()/2, display_get_gui_height()/2 - 128, global.spawn_level, c_white, c_white, c_white, c_white, clamp(wave_alpha*2, 0, 1));
 
 var yp = 16;
 #region draw rammer and cloaking
@@ -96,10 +89,12 @@ if game_over = false && pause = false {
 		
 		if sub = 0 and i = ceil(o_player.hp) {
 			if o_player.healers > 0 draw_sprite_stretched(s_heat_bar, 5, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
+			else if o_player.invincible draw_sprite_stretched(s_heat_bar, 6, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 			else draw_sprite_stretched(s_heat_bar, 4, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 			draw_sprite_stretched(s_heat_bar_cover, round((hp - floor(hp))*11) + 12, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 		} else {
 			if o_player.healers > 0 draw_sprite_stretched(s_heat_bar, 5, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
+			else if o_player.invincible draw_sprite_stretched(s_heat_bar, 6, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 			else draw_sprite_stretched(s_heat_bar, sub, width - 1216 + yp + (i - 1 + _yhp) * sprite_get_width(s_heat_bar)*4, height*2 - 92, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 		}
 	}
@@ -201,7 +196,7 @@ if game_over = false && pause = false {
 	}
 
 	if o_player.weapon_lasers > 0 {
-		var heat_percent = o_player.laser_heat;
+		var heat_percent = o_player.laser_cooldown_heat;
 		draw_sprite_stretched(s_cooldown_icons, 0, width + 516 + 9*sprite_get_width(s_heat_bar)*4 + xx - sprite_get_width(s_heat_bar)*4, height*2 - 92 - 96*yy, sprite_get_width(s_heat_bar)*4, sprite_get_height(s_heat_bar)*4);
 		for (var i = 10; i >= 1; i--) {
 			if i > heat_percent var sub = 0;
@@ -268,7 +263,7 @@ if pause {
 	draw_rectangle(0, 0, room_width, room_height, false);
 	draw_set_color(c_white);
 	draw_set_alpha(1);
-	draw_text(width, height - 256, "PAUSED");
+	if !game_over draw_text(width, height - 256, "PAUSED");
 	
 	sc_draw_menu_overlay();
 	
@@ -277,6 +272,8 @@ if pause {
 	sc_draw_menu_topscores(display_get_gui_width()/16, display_get_gui_height()/16);
 	
 	sc_draw_menu_stats(display_get_gui_width()/16, display_get_gui_height()/16);
+	
+	sc_draw_menu_achievements(display_get_gui_width()/16, display_get_gui_height()/16, 1);
 	
 	if game_over sc_draw_menu_buttons(100, 120, 10);
 	else sc_draw_menu_buttons(240, 180, 10);

@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.613299,
+  "duration": 0.608299,
   "parent": {
     "name": "Shield Break",
     "path": "folders/Sounds/Shield/Shield Break.yy",

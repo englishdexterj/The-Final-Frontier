@@ -41,12 +41,15 @@ function sc_initialize_menu() {
 
 	selection[1, 0] = "Back"; //options
 	selection[1, 1] = "Volume";
-	selection[1, 2] = "Fullscreen";
-	selection[1, 3] = "Controls";
+	selection[1, 2] = "Music";
+	selection[1, 3] = "Menu Volume";
+	selection[1, 4] = "Background Objects";
+	selection[1, 5] = "Fullscreen";
+	selection[1, 6] = "Controls";
 
 	selection[2, 0] = "Back"; //bestiary
 	
-	//selection[4, 0] = "Back"; //topscores
+	selection[7, 0] = "Back"; //achievements
 
 	selection[3, 0] = "Back"; //controls
 	selection[3, 1] = "Key";
@@ -66,6 +69,9 @@ function sc_initialize_menu() {
 
 	selected_bestiary_x = 0;
 	selected_bestiary_y = -1;
+	
+	selected_achievement_x = 0;
+	selected_achievement_y = -1;
 	
 	selected_assign = -1;
 

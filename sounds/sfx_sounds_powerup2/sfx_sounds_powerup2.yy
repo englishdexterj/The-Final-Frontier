@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "sfx_sounds_powerup2",
   "audioGroupId": {
-    "name": "ag_menu_sounds",
-    "path": "audiogroups/ag_menu_sounds",
+    "name": "ag_game_sounds",
+    "path": "audiogroups/ag_game_sounds",
   },
   "bitDepth": 1,
   "bitRate": 128,

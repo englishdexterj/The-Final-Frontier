@@ -1,30 +1,3 @@
-
-	/*
-	var dx = sign(x - other.x);
-	var dy = sign(y - other.y);
-	
-	var sx = sign(x_speed);
-	var sy = sign(y_speed);
-	var sey = sign(other.x_speed);
-	var sex = sign(other.y_speed);
-	
-	var cp = false;
-	var ce = false;
-	if dx > 0 and dy < 0 { //enemy top right
-		if (sx > 0 and sy < 0) var cp = true;
-		if (sex < 0 and sey > 0) var ce = true;
-	} else if dx > 0 and dy > 0 { //enemy top left
-		if (sx < 0 and sy < 0) var cp = true;
-		if (sex > 0 and sey > 0) var ce = true;
-	} else if dx < 0 and dy > 0 { //enemy bot left
-		if (sx < 0 and sy > 0) var cp = true;
-		if (sex > 0 and sey < 0) var ce = true;
-	} else if dx < 0 and dy < 0 { //enemy bot right
-		if (sx > 0 and sy > 0) var cp = true;
-		if (sex < 0 and sey < 0) var ce = true;
-	}
-	*/
-	
 if flash_alpha = 0 and other.size <= 8 {
 	var temp_xspd = x_speed;
 	var temp_yspd = y_speed;
@@ -71,7 +44,7 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active && !i
 			hp -= 1;
 		} else hp = 0;
 		
-		if hp = 1 {
+		if hp + hull_health <= 1 and flash_alpha = 1 {
 			audio_play_sound_at(sfx_lowhealth, x, y, 0, 100*global.scale, 1000*global.scale, 1, false, 2);
 			audio_play_sound_at(sfx_lowhealth, x - (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
 			audio_play_sound_at(sfx_lowhealth, x + (room_width - view_hport[0]), y, 0, 100*global.scale, 1000*global.scale, 1, false, 1);
@@ -103,6 +76,9 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active && !i
 		} else if other.enemy_type ="bomber" {
 			if hp = 0 steam_set_stat_int("killedby_bomber", steam_get_stat_int("killedby_bomber") + 1);
 			steam_set_stat_int("hitby_bomber", steam_get_stat_int("hitby_bomber") + 1);
+		} else if other.enemy_type ="sentinel" {
+			if hp = 0 steam_set_stat_int("killedby_sentinel", steam_get_stat_int("killedby_sentinel") + 1);
+			steam_set_stat_int("hitby_sentinel", steam_get_stat_int("hitby_sentinel") + 1);
 		} else if other.enemy_type ="rusher" {
 			if hp = 0 steam_set_stat_int("killedby_rusher", steam_get_stat_int("killedby_rusher") + 1);
 			steam_set_stat_int("hitby_rusher", steam_get_stat_int("hitby_rusher") + 1);
@@ -142,6 +118,9 @@ if (flash_alpha = 0 or (rammer and !rammer_cooldown)) and !cloaking_active && !i
 		} else if other.enemy_type ="turret_station" {
 			if hp = 0 steam_set_stat_int("killedby_turret_station", steam_get_stat_int("killedby_turret_station") + 1);
 			steam_set_stat_int("hitby_turret_station", steam_get_stat_int("hitby_turret_station") + 1);
+		} else {
+			if hp = 0 steam_set_stat_int("killedby_enemy_other", steam_get_stat_int("killedby_enemy_other") + 1);
+			steam_set_stat_int("hitby_enemy_other", steam_get_stat_int("hitby_enemy_other") + 1);
 		}
 	}
 	

@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 1.5374041,
+  "duration": 1.532404,
   "parent": {
     "name": "Laser",
     "path": "folders/Sounds/Laser.yy",

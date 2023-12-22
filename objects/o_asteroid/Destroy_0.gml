@@ -9,8 +9,8 @@ if !_clean_destroy {
 			_a.mult = mult/2;
 			_a.hp = floor(mult/2);
 			_a.flip = flip;
-			_a.x_speed = irandom_range(-x_speed/2 - 2*global.scale, x_speed/2 + 2*global.scale);
-			_a.y_speed = irandom_range(-y_speed/2 - 2*global.scale, y_speed/2 + 2*global.scale);
+			_a.x_speed = irandom_range(-x_speed/2 - global.scale, x_speed/2 + global.scale);
+			_a.y_speed = irandom_range(-y_speed/2 - global.scale, y_speed/2 + global.scale);
 			var _spd = (sqr(_a.x_speed) + sqr(_a.y_speed)) / 10;
 			_a.depth -= _spd;
 		}

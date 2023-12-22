@@ -138,6 +138,9 @@ if levelup_menu = true {
 				with o_shield {
 					if enemy = false {
 						max_hit_times += o_player.shield_hits;
+						hit_reduce = 0;
+						image_xscale = 1;
+						image_yscale = 1;
 					}
 				}
 			} else if upgrade[selected, up.name] = "Shield Regen" {
@@ -146,6 +149,9 @@ if levelup_menu = true {
 				with o_shield {
 					if enemy = false {
 						shield_regen += 0.000625;
+						hit_reduce = 0;
+						image_xscale = 1;
+						image_yscale = 1;
 					}
 				}
 			} else if upgrade[selected, up.name] = "Drone Ship" {

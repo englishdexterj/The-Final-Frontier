@@ -3,6 +3,8 @@ image_yscale = image_xscale;
 
 points = 1600;
 
+alarm_set(0, 60); //create more background enemies
+
 #region sides
 for (var i = 0; i < 4; i++) {
 	with instance_create_layer(x, y, "Instances", o_station_side) {
@@ -336,6 +338,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 77;
 					y_start = -154;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x+100*global.scale, y-133*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -348,6 +352,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 100;
 					y_start = -133;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x+122*global.scale, y-111*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -360,6 +366,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 122;
 					y_start = -111;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 			} else if i = 1 {
 				with instance_create_layer(x+154*global.scale, y+77*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
@@ -373,6 +381,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 154;
 					y_start = 77;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x+132*global.scale, y+99*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -385,6 +395,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 132;
 					y_start = 99;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x+110*global.scale, y+121*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -397,6 +409,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = 110;
 					y_start = 121;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 			} else if i = 2 {
 				with instance_create_layer(x-78*global.scale, y+155*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
@@ -410,6 +424,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -78;
 					y_start = 155;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x-100*global.scale, y+133*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -422,6 +438,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -100;
 					y_start = 133;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x-122*global.scale, y+111*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -434,6 +452,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -122;
 					y_start = 111;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 			} else if i = 3 {
 				with instance_create_layer(x-111*global.scale, y-121*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
@@ -447,6 +467,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -111;
 					y_start = -121;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x-133*global.scale, y-99*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -459,6 +481,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -133;
 					y_start = -99;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 				with instance_create_layer(x-155*global.scale, y-77*global.scale, "Instances_Top", choose(o_enemy_basic, o_enemy_basic, o_enemy_suicider, o_enemy_suicider, o_enemy_bomber, o_enemy_rusher, o_enemy_ion, o_enemy_bomber)) {
 					image_xscale = global.scale;
@@ -471,6 +495,8 @@ for (var i = 0; i < 4; i++) {
 					x_start = -155;
 					y_start = -77;
 					parent = other.id;
+					global.idle_enemies++;
+					sc_station_enemy_choose_upgrades();
 				}
 			}
 		} else if type = 2 { //hanger
@@ -481,10 +507,10 @@ for (var i = 0; i < 4; i++) {
 					image_index = 0;
 					x_start = 59;
 					y_start = -59;
-					parent = other.id;
+					parent = other.parent;
 				}
 				image_alpha = 0;
-				//instance_destroy();
+				instance_destroy();
 			} else if i = 1 {
 				with instance_create_layer(x+56*global.scale, y+56*global.scale, "Instances", o_station_hanger) {
 					image_xscale = global.scale;
@@ -493,10 +519,10 @@ for (var i = 0; i < 4; i++) {
 					image_index = 0;
 					x_start = 56;
 					y_start = 56;
-					parent = other.id;
+					parent = other.parent;
 				}
 				image_alpha = 0;
-				//instance_destroy();
+				instance_destroy();
 			} else if i = 2 {
 				with instance_create_layer(x-61*global.scale, y+57*global.scale, "Instances", o_station_hanger) {
 					image_xscale = global.scale;
@@ -505,10 +531,10 @@ for (var i = 0; i < 4; i++) {
 					image_index = 0;
 					x_start = -61;
 					y_start = 57;
-					parent = other.id;
+					parent = other.parent;
 				}
 				image_alpha = 0;
-				//instance_destroy();
+				instance_destroy();
 			} else if i = 3 {
 				with instance_create_layer(x-59*global.scale, y-59*global.scale, "Instances", o_station_hanger) {
 					image_xscale = global.scale;
@@ -517,10 +543,10 @@ for (var i = 0; i < 4; i++) {
 					image_index = 0;
 					x_start = -59;
 					y_start = -59;
-					parent = other.id;
+					parent = other.parent;
 				}
 				image_alpha = 0;
-				//instance_destroy();
+				instance_destroy();
 			}
 		} else if type = 3 { //blank
 			
@@ -529,6 +555,7 @@ for (var i = 0; i < 4; i++) {
 }
 #endregion
 
+#region base
 with instance_create_layer(x+83*global.scale, y-43*global.scale, "Instances_Upper_Middle", o_station_shield) {
 	shield_type = 1;
 	shield_size = 2;
@@ -616,3 +643,4 @@ with instance_create_layer(x-98*global.scale, y-23*global.scale, "Instances_Uppe
 	y_start = -23;
 	depth--;
 }
+#endregion

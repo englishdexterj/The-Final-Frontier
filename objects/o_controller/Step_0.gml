@@ -1,4 +1,4 @@
-if (!instance_exists(o_enemy) or spawn_timer <= 0) && alarm_get(0) = -1 && spawning
+if (global.active_enemies - global.idle_enemies = 0 or spawn_timer <= 0) && alarm_get(0) = -1 && spawning
 	&& (enemy[enemies.heavy_cruiser][3] != global.spawn_level || !instance_exists(o_enemy))
 	&& (enemy[enemies.battlecruiser][3] != global.spawn_level || !instance_exists(o_enemy))
 	&& (enemy[enemies.destroyer][3] != global.spawn_level || !instance_exists(o_enemy)) {
@@ -6,6 +6,28 @@ if (!instance_exists(o_enemy) or spawn_timer <= 0) && alarm_get(0) = -1 && spawn
 	round_intermission = true;
 	spawn_timer = 1500 + 20*global.spawn_level;
 } else spawn_timer--;
+
+global.tick++;
+
+if !audio_is_playing(current_audio) {
+	current_audio = choose(music7, music12, music13, hmusic9);
+	audio_play_sound(current_audio, 1, false);
+}
+/*
+if current_audio = 0 and !audio_is_playing(sd_mix_1) and !audio_is_playing(sd_mix_4) {
+	audio_play_sound(sd_mix_1, 1, false);
+	current_audio = 1;
+} else if current_audio = 1 and !audio_is_playing(sd_mix_2) and !audio_is_playing(sd_mix_1) {
+	audio_play_sound(sd_mix_2, 1, false);
+	current_audio = 2;
+} else if current_audio = 2 and !audio_is_playing(sd_mix_3) and !audio_is_playing(sd_mix_2) {
+	audio_play_sound(sd_mix_3, 1, false);
+	current_audio = 3;
+} else if current_audio = 3 and !audio_is_playing(sd_mix_4) and !audio_is_playing(sd_mix_3) {
+	audio_play_sound(sd_mix_4, 1, false);
+	current_audio = 0;
+}
+*/
 
 if keyboard_check_pressed(ord("O")) debug = -debug + 1;
 
@@ -88,6 +110,28 @@ if debug = 1 {
 			_s.upgrades = spawn_level;
 			global.cheats = true;
 		}
+		if keyboard_check_released(vk_numpad5) {
+			var _s = instance_create_layer(mouse_x, mouse_y, "Instances_Top", o_enemy_sentinel);
+			_s.upgrades = spawn_level;
+			global.cheats = true;
+		}
+		if keyboard_check_released(vk_numpad6) {
+			var _a = instance_create_layer(mouse_x, mouse_y, "Instances_Top", o_asteroid);
+			with _a {
+				x_speed = random_range(-2, 2);
+	
+				if y = 0 {
+					y -= irandom_range(200, 450);
+					y_speed = random_range(3, 7);
+				} else if y = room_height {
+					y += irandom_range(200, 450);
+					y_speed = random_range(-3, -7);
+				}
+				var _spd = (sqr(x_speed) + sqr(y_speed)) / 10;
+				depth -= _spd;
+			}
+			global.cheats = true;
+		}
 	}
 	#endregion
 
@@ -119,7 +163,7 @@ if debug = 1 {
 	
 	if keyboard_check_released(ord("M")) {
 		if instance_exists(o_player) {
-			o_player.invincible = true;
+			o_player.invincible = o_player.invincible*-1 + 1;
 		}
 		global.cheats = true;
 	}

@@ -1,6 +1,6 @@
 if other.enemy = false && (other.image_alpha = 1 or disabled) and !invincible {
-	_x = other.x - x;
-	_y = other.y - y;
+	var _x = other.x - x;
+	var _y = other.y - y;
 	
 	var _a = image_angle * pi / 180;
 	damage_y = _y*cos(_a) + _x*sin(_a);
@@ -41,10 +41,10 @@ if other.enemy = false && (other.image_alpha = 1 or disabled) and !invincible {
 			
 			hurt = true;
 			alarm_set(7, 10);
-		} else if other.type = "ion" {
+		} else if other.type = "ion" and can_be_disabled {
 			hit_radius = 0;
 			disabled = true;
-			alarm_set(6, 120);
+			alarm_set(6, 240);
 		}
 		
 		//shader

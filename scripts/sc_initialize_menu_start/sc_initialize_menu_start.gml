@@ -155,6 +155,6 @@ function sc_initialize_menu_start() {
 	color[colors.blue][2] = "No Modifier"; //description
 	color[colors.green][2] = "+1 Health";
 	color[colors.orange][2] = "+10% Gun Cooldown";
-	color[colors.purple][2] = "+5% Point Gain";
+	color[colors.purple][2] = "+10% Point Gain";
 	color[colors.yellow][2] = "+20% Speed";
 }

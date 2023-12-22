@@ -15,8 +15,8 @@ if steam_initialised() {
 
 #region wave alpha
 if !pause {
-	if wave_alpha > 0 wave_alpha -= (1/120);
-	if global.spawn_level = 0 start_alpha -= 1/180;
+	if wave_alpha > 0 wave_alpha -= (1/180);
+	if global.spawn_level = 0 start_alpha -= 1/240;
 }
 #endregion
 
@@ -45,6 +45,7 @@ if game_over = false && pause = false && hp + o_player.hull_health <= 0  {
 		sc_step_menu_control();
 		sc_step_menu_topscores();
 		sc_step_menu_stats();
+		sc_step_menu_achievements();
 		
 		if (keyboard_check_pressed(global.key[ctrl.back]) || gamepad_button_check_pressed(0, gp_start)) {
 			instance_activate_all();

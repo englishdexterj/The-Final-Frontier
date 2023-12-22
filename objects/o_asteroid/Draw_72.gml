@@ -7,7 +7,7 @@ if hit {
 	surface_set_target(_temp_surf);
 	draw_clear_alpha(c_black, 0)
 	
-	draw_sprite_ext(sprite_index, image_index, _size div 2, _size div 2, (image_xscale/global.scale)/mult, (image_yscale/global.scale)/mult, 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, _size div 2, _size div 2, flip*(image_xscale/global.scale)/mult, flip*(image_yscale/global.scale)/mult, image_angle, c_white, image_alpha);
 	
 	
 	gpu_set_blendmode(bm_subtract);
@@ -32,6 +32,4 @@ if hit {
 	sprite_collision_mask(sprite_index, false, 0, 0, 0, 0, 0, 0, 0);
 	
 	hit = false;
-	image_xscale *= flip;
-	image_yscale *= flip;
 }

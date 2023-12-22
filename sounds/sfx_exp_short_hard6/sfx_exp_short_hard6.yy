@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.619671,
+  "duration": 0.614671,
   "parent": {
     "name": "Short",
     "path": "folders/Sounds/Explosion/Short.yy",

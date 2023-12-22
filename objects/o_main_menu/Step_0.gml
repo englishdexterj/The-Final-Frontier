@@ -65,3 +65,4 @@ if steam_initialised() {
 sc_step_menu_control();
 sc_step_menu_topscores();
 sc_step_menu_stats();
+sc_step_menu_achievements();

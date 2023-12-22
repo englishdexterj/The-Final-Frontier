@@ -6,6 +6,7 @@ _clean_destroy = false;
 if !instance_exists(o_player) o_main_menu.menu_asteroids++;
 
 if !variable_instance_exists(id, "hp") hp = floor(mult/2);
+max_hp = hp;
 
 image_xscale = global.scale*mult;
 image_yscale = global.scale*mult;

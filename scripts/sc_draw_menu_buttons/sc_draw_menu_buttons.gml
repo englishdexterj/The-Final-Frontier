@@ -35,7 +35,60 @@ function sc_draw_menu_buttons(pause_x, pause_y, scale) {
 				draw_set_color(c_gray);
 				draw_sprite_stretched(s_button_volume_arrows, 3, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
 			}
-			draw_text(pause_x + sprite_get_width(s_button_volume)*scale/2, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_volume)*scale/2, "Volume");
+			draw_text(pause_x + sprite_get_width(s_button_volume)*scale/2, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_volume)*scale/2, "Game");
+		} else if selection[sel_menu, i] = "Music" {
+			draw_sprite_stretched(s_button_volume, global.music/10, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+			if selected = i {
+				draw_set_color(c_white);
+				if keyboard_check(global.key[ctrl.left]) {
+					draw_sprite_stretched(s_button_volume_arrows, 1, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				} else if keyboard_check(global.key[ctrl.right]) {
+					draw_sprite_stretched(s_button_volume_arrows, 2, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				} else {
+					draw_sprite_stretched(s_button_volume_arrows, 0, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				}
+			} else {
+				draw_set_color(c_gray);
+				draw_sprite_stretched(s_button_volume_arrows, 3, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+			}
+			draw_text(pause_x + sprite_get_width(s_button_volume)*scale/2, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_volume)*scale/2, "Music");
+		} else if selection[sel_menu, i] = "Menu Volume" {
+			draw_sprite_stretched(s_button_volume, global.menu_sound/10, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+			if selected = i {
+				draw_set_color(c_white);
+				if keyboard_check(global.key[ctrl.left]) {
+					draw_sprite_stretched(s_button_volume_arrows, 1, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				} else if keyboard_check(global.key[ctrl.right]) {
+					draw_sprite_stretched(s_button_volume_arrows, 2, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				} else {
+					draw_sprite_stretched(s_button_volume_arrows, 0, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+				}
+			} else {
+				draw_set_color(c_gray);
+				draw_sprite_stretched(s_button_volume_arrows, 3, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_volume)*scale, sprite_get_height(s_button_volume)*scale);
+			}
+			draw_text(pause_x + sprite_get_width(s_button_volume)*scale/2, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_volume)*scale/2, "Menu Volume");
+		} else if selection[sel_menu, i] = "Background Objects" {
+			draw_sprite_stretched(s_button_wide, (global.background_objects), pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_wide)*scale, sprite_get_height(s_button_wide)*scale);
+			if selected = i {
+				draw_set_color(c_white);
+				if keyboard_check(global.key[ctrl.left]) {
+					draw_sprite_stretched(s_button_arrows_wide, 1, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_wide)*scale, sprite_get_height(s_button_wide)*scale);
+				} else if keyboard_check(global.key[ctrl.right]) {
+					draw_sprite_stretched(s_button_arrows_wide, 2, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_wide)*scale, sprite_get_height(s_button_wide)*scale);
+				} else {
+					draw_sprite_stretched(s_button_arrows_wide, 0, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_wide)*scale, sprite_get_height(s_button_wide)*scale);
+				}
+			} else {
+				draw_set_color(c_gray);
+				draw_sprite_stretched(s_button_arrows_wide, 3, pause_x, pause_y + i*16*scale + _y, sprite_get_width(s_button_wide)*scale, sprite_get_height(s_button_wide)*scale);
+			}
+			
+			if global.background_objects = 0 var _s = "No Background Objects";
+			else if global.background_objects = 1 var _s = "Station Background Objects";
+			else if global.background_objects = 2 var _s = "All Background Objects";
+			else var _s = "ERR: draw_menu_buttons";
+			draw_text(pause_x + sprite_get_width(s_button_wide)*scale/2, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_wide)*scale/2, _s);
 		} else if selection[sel_menu, i] = "Key" {
 				if selected = i {
 					if (sel_menu = 2 and selected_bestiary_y = -1) or sel_menu != 2 draw_set_color(c_white);
@@ -84,7 +137,9 @@ function sc_draw_menu_buttons(pause_x, pause_y, scale) {
 			draw_text(pause_x + sprite_get_width(s_button_volume)*scale/2 + _x, pause_y + i*16*scale + yy + _y + sprite_get_height(s_button_volume)*scale/2, "Volume");
 		} else {
 			if selected = i {
-				if (sel_menu = 2 and selected_bestiary_y = -1) or sel_menu != 2 draw_set_color(c_white);
+				if (sel_menu = 2 and selected_bestiary_y = -1) 
+					or (sel_menu = 7 and selected_achievement_y = -1)
+					or (sel_menu != 2 and sel_menu != 7) draw_set_color(c_white);
 				else draw_set_color(c_gray);
 				if pressing = selected {
 					yy += scale;

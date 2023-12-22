@@ -12,6 +12,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"cooldown_speed","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"1",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"max_turn_speed","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"8",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"max_turn_acceleration","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"2",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"o_enemy_turret_large","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"propertyId":{"name":"max_range","path":"objects/o_enemy_turret_large/o_enemy_turret_large.yy",},"value":"500",},
   ],
   "parent": {
     "name": "Enemies",

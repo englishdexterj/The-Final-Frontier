@@ -19,7 +19,7 @@ if instance_exists(o_player) and !idle {
 
 	if ((abs(_dy) - view_hport[0]/2) <= 100*global.scale) _cy = 1 - (abs(_dy) - view_hport[0]/2)/(100*global.scale);
 	else var _cy = 0;
-	var _a = 1 - (abs(_dy)-view_hport[0]/2)/(2000*global.scale) - _cy;
+	var _a = 1 - (abs(_dy)-view_hport[0]/2)/(1000*global.scale) - _cy;
 	draw_set_alpha(clamp(_a, 0, 1));
 
 	if _dy > view_hport[0]/2 {

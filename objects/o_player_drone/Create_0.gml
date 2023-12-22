@@ -53,5 +53,6 @@ flash_color = c_white;
 cloaking_active = false;
 
 hp = 1;
+max_hp = hp;
 
 alarm_set(8, 1);

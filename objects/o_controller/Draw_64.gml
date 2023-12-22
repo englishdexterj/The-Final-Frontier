@@ -3,7 +3,11 @@ if debug = 1 {
 	draw_set_font(f_score);
 	draw_set_alpha(.5);
 	var _add = 0;
-	draw_text(64, 96, "Steam:" + string(steam_initialised()) + " Spawn (+):" + string(spawn) + " Level (-):" + string(spawn_level)); _add += 64;
+	draw_text(64, 96, "Steam:" + string(steam_initialised()) + 
+					  " Spawn (+):" + string(spawn) + 
+					  " Level (-):" + string(spawn_level) +
+					  " Total Enemies:" + string(global.active_enemies) +
+					  " Idle Enemies:" + string(global.idle_enemies)); _add += 64;
 	draw_text(64, 96+_add, "O: Close Menu"); _add += 64;
 	draw_text(64, 96+_add, "R: Enemy Spawn %"); _add += 64;
 	draw_text(64, 96+_add, "P: Round +12"); _add += 64;

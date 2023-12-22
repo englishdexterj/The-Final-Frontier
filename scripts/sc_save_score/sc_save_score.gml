@@ -48,6 +48,7 @@ function sc_save_score(quit) {
 			
 				if !upload_ID alarm_set(2, room_speed);
 				steam_set_stat_int("total_deaths", steam_get_stat_int("total_deaths") + 1);
+				steam_set_stat_int("total_games", steam_get_stat_int("total_games") + 1);
 				steam_set_stat_int("total_rounds", steam_get_stat_int("total_rounds") + global.spawn_level);
 			}
 			#endregion
@@ -69,28 +70,31 @@ function sc_save_score(quit) {
 				new_highscore = true;
 			} else new_highscore = false;
 		
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 25; i++) {
 				top10_scores[0][i] = ini_read_real("top10_scores", string(0) + ":" + string(i), -1);
 				top10_scores[1][i] = ini_read_real("top10_scores", string(1) + ":" + string(i), -1);
 				top10_scores[2][i] = ini_read_real("top10_scores", string(2) + ":" + string(i), -1);
 				top10_scores[3][i] = ini_read_real("top10_scores", string(3) + ":" + string(i), -1);
 				top10_scores[4][i] = ini_read_string("top10_scores", string(4) + ":" + string(i), "");
+				top10_scores[5][i] = ini_read_real("top10_scores", string(5) + ":" + string(i), -1);
 			}
 		
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 25; i++) {
 				if global.pts > top10_scores[0][i] {
-					for (var j = 9; j > i; j--) {
+					for (var j = 24; j > i; j--) {
 						ini_write_real("top10_scores", "0:" + string(j), top10_scores[0][j-1]);
 						ini_write_real("top10_scores", "1:" + string(j), top10_scores[1][j-1]);
 						ini_write_real("top10_scores", "2:" + string(j), top10_scores[2][j-1]);
 						ini_write_real("top10_scores", "3:" + string(j), top10_scores[3][j-1]);
 						ini_write_string("top10_scores", "4:" + string(j), top10_scores[4][j-1]);
+						ini_write_real("top10_scores", "5:" + string(j), top10_scores[5][j-1]);
 					}
 					ini_write_real("top10_scores", "0:" + string(i), global.pts);
 					ini_write_real("top10_scores", "1:" + string(i), global.selected_character);
 					ini_write_real("top10_scores", "2:" + string(i), global.ascension_modifier[global.selected_character]);
 					ini_write_real("top10_scores", "3:" + string(i), global.color_modifier[global.selected_character]);
 					ini_write_string("top10_scores", "4:" + string(i), o_player.upgrade_string + ":");
+					ini_write_real("top10_scores", "5:" + string(i), global.spawn_level);
 					/*
 					if instance_exists(o_player) and variable_instance_exists(o_player, "upgrade_string") {
 						ini_write_string("top10_scores", "4:" + string(i), o_player.upgrade_string + ":");
